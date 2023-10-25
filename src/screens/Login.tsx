@@ -19,3 +19,7 @@ export const Login: NavioScreen = ({}) => {
     </View>
   );
 };
+
+Login.options = {
+  title: "Test",
+};

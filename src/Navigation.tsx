@@ -1,20 +1,36 @@
 import { Navio } from "rn-navio";
 
-import { Login } from "@app/screens";
+import { Login, Settings } from "@app/screens";
+import {
+  drawerScreenDefaultOptions,
+  screenDefaultOptions,
+  tabScreenDefaultOptions,
+} from "./utils/designSystem";
 
-const navio = Navio.build({
-  screens: { Login },
+export const navio = Navio.build({
+  screens: { Login, Settings },
   stacks: {
     Auth: {
-      screens: ["Login"],
+      screens: ["Login", "Settings"],
       navigatorProps: {
         screenOptions: {
-          headerShown: false,
+          headerShown: true,
         },
       },
     },
   },
   root: "Auth",
+  defaultOptions: {
+    stacks: {
+      screen: screenDefaultOptions,
+    },
+    tabs: {
+      screen: tabScreenDefaultOptions,
+    },
+    drawers: {
+      screen: drawerScreenDefaultOptions,
+    },
+  },
 });
 
 export const Navigation = navio.App;
