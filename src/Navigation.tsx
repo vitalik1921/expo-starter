@@ -1,12 +1,20 @@
 import { Navio } from "rn-navio";
-import { DashboardScreen } from "@app/screens";
+
+import { Login } from "@app/screens";
 
 const navio = Navio.build({
-  screens: { DashboardScreen },
+  screens: { Login },
   stacks: {
-    Main: ["DashboardScreen"],
+    Auth: {
+      screens: ["Login"],
+      navigatorProps: {
+        screenOptions: {
+          headerShown: false,
+        },
+      },
+    },
   },
-  root: "Main",
+  root: "Auth",
 });
 
 export const Navigation = navio.App;

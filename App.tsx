@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import * as Linking from "expo-linking";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
-// import { useFonts } from "expo-font";
+import { useColorScheme } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { Navigation } from "@app/Navigation";
@@ -12,9 +13,7 @@ import {
   getStatusBarBGColor,
   getStatusBarStyle,
 } from "@app/utils/designSystem";
-
-import { useInitRootStore } from "./src/utils/store/useStores";
-import { useColorScheme } from "react-native";
+import { useInitRootStore } from "@app/utils/store";
 
 if (__DEV__) {
   // Load Reactotron configuration in development. We don't want to
@@ -26,10 +25,6 @@ if (__DEV__) {
 export default function App() {
   useColorScheme();
   const { rehydrated } = useInitRootStore();
-  // const [loaded] = useFonts({
-  //   Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
-  //   InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
-  // });
   const isReady = [rehydrated].every((item) => !!item);
 
   useEffect(() => {
@@ -47,19 +42,21 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider>
-      <StatusBar
-        style={getStatusBarStyle()}
-        backgroundColor={getStatusBarBGColor()}
-      />
-      <Navigation
-        navigationContainerProps={{
-          theme: getNavigationTheme(),
-          linking: {
-            prefixes: [Linking.createURL("/")],
-          },
-        }}
-      />
-    </SafeAreaProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <StatusBar
+          style={getStatusBarStyle()}
+          backgroundColor={getStatusBarBGColor()}
+        />
+        <Navigation
+          navigationContainerProps={{
+            theme: getNavigationTheme(),
+            linking: {
+              prefixes: [Linking.createURL("/")],
+            },
+          }}
+        />
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }
