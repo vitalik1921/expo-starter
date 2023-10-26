@@ -10,6 +10,7 @@ import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 
 import { Appearance } from "./enums";
 import { _rootStore } from "./store/useStores";
+import { theme } from "./theme";
 
 // =============
 // | RN UI Lib |
@@ -98,10 +99,13 @@ export const getNavigationTheme = (): Theme => {
     dark: false,
     colors: {
       ...DefaultTheme.colors,
-      primary: Colors.primary,
-      background: Colors.bgColor,
+      // @ts-ignore
+      primary: theme.colors!.primary,
+      // @ts-ignore
+      background: theme.colors!.white,
       card: Colors.bgColor,
-      text: Colors.textColor,
+      // @ts-ignore
+      text: theme.colors.ink.darkest,
       // border: Colors.grey30,
       // notification: Colors.primary,
     },
