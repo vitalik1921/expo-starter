@@ -24,11 +24,12 @@ if (__DEV__) {
 
 export default function App() {
   useColorScheme();
-  const { rehydrated } = useInitRootStore();
+  const { rehydrated, rootStore } = useInitRootStore();
   const isReady = [rehydrated].every((item) => !!item);
 
   useEffect(() => {
     SplashScreen.preventAutoHideAsync();
+    rootStore.auth.initAuthStateListener();
   }, []);
 
   useEffect(() => {

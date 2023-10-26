@@ -1,16 +1,13 @@
-import { Button, Text, TextField, View } from "react-native-ui-lib";
+import { Button, TextField, View } from "react-native-ui-lib";
 import { Bounceable } from "rn-bounceable";
 import { NavioScreen } from "rn-navio";
 
-export const Login: NavioScreen = ({}) => {
+export const SignUp: NavioScreen = ({}) => {
   return (
     <View flex paddingH-25 paddingT-120>
-      <Text blue50 text20>
-        Welcome
-      </Text>
       <TextField placeholder={"Login"} floatingPlaceholder />
       <TextField placeholder={"Password"} secureTextEntry floatingPlaceholder />
-      <View marginT-100 center>
+      <View marginT-100>
         <Bounceable>
           <Button text70 white background-orange30 label="Login" />
         </Bounceable>
@@ -20,6 +17,6 @@ export const Login: NavioScreen = ({}) => {
   );
 };
 
-Login.options = {
-  title: "Test",
+SignUp.options = {
+  title: "Sign up",
 };

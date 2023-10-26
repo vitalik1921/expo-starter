@@ -14,7 +14,7 @@ export const navio = Navio.build({
       screens: ["Login", "Settings"],
       navigatorProps: {
         screenOptions: {
-          headerShown: true,
+          headerShown: false,
         },
       },
     },
