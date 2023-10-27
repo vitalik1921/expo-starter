@@ -11,9 +11,9 @@ export const Start: NavioScreen = () => {
         <View className="h-[400] justify-start">
           <View className="flex-row justify-center mb-[40]">
             <Text className="text-title3 text-primary-dark font-bold">
-              your
+              warp
             </Text>
-            <Text className="text-title3 font-bold">app</Text>
+            <Text className="text-title3 font-bold">kit</Text>
           </View>
           <View className="flex items-center">
             <Image
@@ -23,10 +23,10 @@ export const Start: NavioScreen = () => {
             />
           </View>
         </View>
-        <View className="flex-1 items-center justify-end shrink">
+        <View className="flex-1 items-center justify-end">
           <Button
             label="Create account"
-            // variant="start"
+            path="SignUp"
             className="w-[182] mb-[24]"
             onPress={() => null}
           />

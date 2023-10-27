@@ -1,6 +1,6 @@
 import { Navio } from "rn-navio";
 
-import { Login, Start, Settings } from "@app/screens";
+import { Login, SignUp, Start, Settings } from "@app/screens";
 import {
   drawerScreenDefaultOptions,
   screenDefaultOptions,
@@ -11,11 +11,12 @@ export const navio = Navio.build({
   screens: {
     Start: { component: Start, options: { headerShown: false } },
     Login,
+    SignUp,
     Settings,
   },
   stacks: {
     Auth: {
-      screens: ["Start", "Login", "Settings"],
+      screens: ["Start", "Login", "SignUp", "Settings"],
       navigatorProps: {
         screenOptions: {
           headerShown: true,

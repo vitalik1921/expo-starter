@@ -1,17 +1,15 @@
 import cn from "classnames";
-import {
-  Button as LibButton,
-  View,
-  HapticService,
-  HapticType,
-} from "react-native-ui-lib";
+import * as Linking from "expo-linking";
+import { Button as LibButton, View } from "react-native-ui-lib";
 import { Bounceable } from "rn-bounceable";
 
+import { navio } from "@app/Navigation";
 import { theme } from "@app/utils/theme";
 
 interface ButtonProps {
   label: string;
   variant?: keyof typeof variants;
+  path?: string;
   disabled?: boolean;
   onPress?: () => void;
   className?: string;
@@ -20,6 +18,7 @@ interface ButtonProps {
 export function Button({
   label,
   variant = "base",
+  path,
   disabled = false,
   onPress,
   className = "",
@@ -29,6 +28,15 @@ export function Button({
 
   const handlePress = () => {
     // HapticService.triggerHaptic(HapticType.impactLight, "test");
+    if (path) {
+      const isUrl = path.startsWith("http");
+      if (isUrl) {
+        Linking.openURL(path);
+      } else {
+        navio.N.navigate(path);
+      }
+    }
+
     onPress && onPress();
   };
 

@@ -1,7 +1,9 @@
-import cn from "classnames";
 import { PropsWithChildren } from "react";
-import { Text } from "react-native-ui-lib";
+
+import cn from "classnames";
 import * as Linking from "expo-linking";
+import { Text } from "react-native-ui-lib";
+
 import { navio } from "@app/Navigation";
 
 interface LinkProps extends PropsWithChildren {
@@ -10,8 +12,8 @@ interface LinkProps extends PropsWithChildren {
 }
 
 export function Link({ path, className, children }: LinkProps) {
-  const isUrl = path.startsWith("http");
   const handlePress = () => {
+    const isUrl = path.startsWith("http");
     if (isUrl) {
       Linking.openURL(path);
     } else {

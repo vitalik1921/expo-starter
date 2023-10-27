@@ -21,8 +21,8 @@ export const Login: NavioScreen = () => {
           className="self-start"
         />
       </View>
-      <View className="flex-1 justify-end">
-        <Text className="text-small mb-5">
+      <View className="flex-1 items-center justify-end">
+        <Text className="text-regular font-light">
           By continuing, you agree to our Terms of Service and Privacy Policy.
         </Text>
         <Button label="Login" onPress={() => undefined} />
