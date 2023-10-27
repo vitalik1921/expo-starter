@@ -11,10 +11,10 @@ export const Start: NavioScreen = () => {
       <View className="flex-1 p-10 justify-between">
         <View className="h-[400] justify-start">
           <View className="flex-row justify-center mb-[40]">
-            <Text className="text-title3 text-primary-dark font-bold">
+            <Text className="text-title2 text-primary-dark font-bold">
               warp
             </Text>
-            <Text className="text-title3 font-bold">kit</Text>
+            <Text className="text-title2 font-bold">kit</Text>
           </View>
           <View className="flex items-center">
             <Image
