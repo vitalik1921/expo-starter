@@ -9,7 +9,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { Navigation } from "@app/Navigation";
 import { useInitRootStore } from "@app/utils/store";
-import { useNavigationTheme } from "@app/utils/hooks/useNavigationTheme";
+import { useNavigationTheme } from "@app/utils/navigationTheme";
 
 if (__DEV__) {
   // Load Reactotron configuration in development. We don't want to
@@ -20,9 +20,9 @@ if (__DEV__) {
 
 export default function App() {
   useColorScheme();
+  const navigationTheme = useNavigationTheme();
   const { rehydrated, rootStore } = useInitRootStore();
   const isReady = [rehydrated].every((item) => !!item);
-  const navigationTheme = useNavigationTheme();
 
   useEffect(() => {
     SplashScreen.preventAutoHideAsync();

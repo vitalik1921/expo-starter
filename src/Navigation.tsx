@@ -5,7 +5,7 @@ import {
   drawerScreenDefaultOptions,
   screenDefaultOptions,
   tabScreenDefaultOptions,
-} from "./utils/designSystem";
+} from "./utils/navigationTheme";
 
 export const navio = Navio.build({
   screens: {

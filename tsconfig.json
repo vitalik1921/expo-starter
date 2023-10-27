@@ -19,7 +19,6 @@
       "@app/*": ["src/*/index", "src/*"]
     }
   },
-  "include": ["tailwind.config.ts"],
   "exclude": [
     "node_modules",
     "babel.config.js",
