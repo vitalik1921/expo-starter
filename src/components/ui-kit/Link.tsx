@@ -17,7 +17,7 @@ export function Link({ path, className, children }: LinkProps) {
     if (isUrl) {
       Linking.openURL(path);
     } else {
-      navio.N.navigate(path);
+      navio.push(path as any);
     }
   };
 

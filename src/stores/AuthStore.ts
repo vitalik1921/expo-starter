@@ -1,22 +1,25 @@
+import { flow, Instance, SnapshotOut, types } from "mobx-state-tree";
+
 import { Session, SessionModel } from "@app/models";
 import { supabase } from "@app/utils/supabase";
-import { Instance, SnapshotOut, flow, types } from "mobx-state-tree";
+import {
+  AuthResponse,
+  Session as SupabaseSession,
+} from "@supabase/supabase-js";
 
 export const AuthStoreModel = types
   .model("AuthStore")
   .volatile(() => ({
     session: null as Session | null,
-    isLoading: true,
+    isLoading: false,
   }))
   .actions((store) => ({
-    initAuthStateListener: flow(function* () {
-      supabase.auth.onAuthStateChange((_, session) => {
-        // TODO: implement user fetching
-        console.warn("session", session);
-        store.session = SessionModel.create({ state: session, user: null });
-        store.isLoading = false;
-      });
-    }),
+    setLoading: (state: boolean) => {
+      store.isLoading = state;
+    },
+    setSession: (session: SupabaseSession | null) => {
+      store.session = SessionModel.create({ state: session, user: null });
+    },
     signInWithGoogle: flow(function* () {
       try {
         store.isLoading = true;
@@ -33,10 +36,24 @@ export const AuthStoreModel = types
         store.isLoading = false;
       }
     }),
-    signUpWithPassword: flow(function* () {
+    signUpWithPassword: flow(function* (email: string, password: string) {
       try {
         store.isLoading = true;
+        const { data, error }: AuthResponse = yield supabase.auth.signUp({
+          email,
+          password,
+        });
+
+        if (error) {
+          throw error;
+        }
+
+        store.session = SessionModel.create({
+          state: data.session,
+          user: null,
+        });
       } catch (error) {
+        // TODO: process error
       } finally {
         store.isLoading = false;
       }

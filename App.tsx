@@ -8,8 +8,9 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { Navigation } from "@app/Navigation";
-import { useInitRootStore } from "@app/utils/store";
 import { useNavigationTheme } from "@app/utils/navigationTheme";
+import { useInitRootStore } from "@app/utils/store";
+import { supabase } from "@app/utils/supabase";
 
 if (__DEV__) {
   // Load Reactotron configuration in development. We don't want to
@@ -26,7 +27,12 @@ export default function App() {
 
   useEffect(() => {
     SplashScreen.preventAutoHideAsync();
-    rootStore.auth.initAuthStateListener();
+    supabase.auth.onAuthStateChange((_, session) => {
+      // TODO: implement user fetching
+      console.warn("session", session);
+      rootStore.auth.setSession(session);
+      rootStore.auth.setLoading(false);
+    });
   }, []);
 
   useEffect(() => {

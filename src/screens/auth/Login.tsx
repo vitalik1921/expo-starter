@@ -3,10 +3,11 @@ import { NavioScreen } from "rn-navio";
 
 import { Button } from "@app/components";
 import { Input } from "@app/components/ui-kit/Input";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export const Login: NavioScreen = () => {
   return (
-    <View className="flex flex-1 flex-col p-[24] pt-[120]">
+    <SafeAreaView className="flex flex-1 flex-col p-[24] pt-[120]">
       <View className="flex-1">
         <Input name="login" label="Login" className="flex-1" />
         <Input
@@ -27,6 +28,6 @@ export const Login: NavioScreen = () => {
         </Text>
         <Button label="Login" onPress={() => undefined} />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
