@@ -8,12 +8,8 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { Navigation } from "@app/Navigation";
-import {
-  getNavigationTheme,
-  getStatusBarBGColor,
-  getStatusBarStyle,
-} from "@app/utils/designSystem";
 import { useInitRootStore } from "@app/utils/store";
+import { useNavigationTheme } from "@app/utils/hooks/useNavigationTheme";
 
 if (__DEV__) {
   // Load Reactotron configuration in development. We don't want to
@@ -26,6 +22,7 @@ export default function App() {
   useColorScheme();
   const { rehydrated, rootStore } = useInitRootStore();
   const isReady = [rehydrated].every((item) => !!item);
+  const navigationTheme = useNavigationTheme();
 
   useEffect(() => {
     SplashScreen.preventAutoHideAsync();
@@ -46,12 +43,12 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
         <StatusBar
-          style={getStatusBarStyle()}
-          backgroundColor={getStatusBarBGColor()}
+          style={navigationTheme.statusBarStyle}
+          backgroundColor={navigationTheme.statusBarBGColor}
         />
         <Navigation
           navigationContainerProps={{
-            theme: getNavigationTheme(),
+            theme: navigationTheme.navigationTheme,
             linking: {
               prefixes: [Linking.createURL("/")],
             },

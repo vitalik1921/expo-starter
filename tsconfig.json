@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "ESNext",
     "module": "commonjs",
     "lib": ["es2017"],
     "allowJs": true,
@@ -13,11 +13,13 @@
     "esModuleInterop": true,
     "skipLibCheck": false,
     "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
     "baseUrl": ".",
     "paths": {
       "@app/*": ["src/*/index", "src/*"]
     }
   },
+  "include": ["tailwind.config.ts"],
   "exclude": [
     "node_modules",
     "babel.config.js",

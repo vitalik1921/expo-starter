@@ -21,10 +21,8 @@ export function Button({
   className = "",
 }: ButtonProps) {
   const labelColor = useMemo(() => {
-    if (disabled) return (theme.colors!.sky as any).dark as string;
-    return link
-      ? ((theme.colors!.primary as any).base as string)
-      : (theme.colors!.white as string);
+    if (disabled) return theme.colors.sky.dark;
+    return link ? theme.colors.primary.base : theme.colors.white;
   }, [link, disabled]);
 
   return (
@@ -44,7 +42,7 @@ export function Button({
           className
         )}
         labelStyle={{
-          fontSize: theme.fontSize!.regular as unknown as number,
+          fontSize: parseInt(theme.fontSize.regular),
           color: labelColor,
         }}
       />

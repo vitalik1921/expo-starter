@@ -42,7 +42,7 @@ export function Input({
       floatingPlaceholderStyle={{
         position: "absolute",
         top: hasValue ? 20 : 15,
-        fontSize: hasValue ? theme.fontSize!.tiny : theme.fontSize!.regular,
+        fontSize: hasValue ? theme.fontSize.tiny : theme.fontSize.regular,
         left: 18,
       }}
       secureTextEntry={secureTextEntry}
