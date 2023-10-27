@@ -1,9 +1,9 @@
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, View } from "react-native-ui-lib";
 import { NavioScreen } from "rn-navio";
 
 import { Button, Link } from "@app/components";
 import { Input } from "@app/components/ui-kit/Input";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export const Login: NavioScreen = () => {
   return (
