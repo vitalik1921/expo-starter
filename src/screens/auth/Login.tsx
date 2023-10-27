@@ -1,7 +1,7 @@
 import { Text, View } from "react-native-ui-lib";
 import { NavioScreen } from "rn-navio";
 
-import { Button } from "@app/components";
+import { Button, Link } from "@app/components";
 import { Input } from "@app/components/ui-kit/Input";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -23,8 +23,10 @@ export const Login: NavioScreen = () => {
         />
       </View>
       <View className="flex-1 items-center justify-end">
-        <Text className="text-regular font-light">
-          By continuing, you agree to our Terms of Service and Privacy Policy.
+        <Text className="text-regular font-light mb-[24]">
+          By continuing, you agree to our{" "}
+          <Link path="https://google.com">Terms of Service</Link> and{" "}
+          <Link path="https://google.com">Privacy Policy</Link>.
         </Text>
         <Button label="Login" onPress={() => undefined} />
       </View>

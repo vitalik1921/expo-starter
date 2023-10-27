@@ -16,8 +16,9 @@ export const SignUp: NavioScreen = observer(() => {
   const { auth } = useStores();
 
   const handleSignUp = () => {
-    auth.signUpWithPassword(email, password);
-    navio.stacks.push("Verification");
+    auth
+      .signUpWithPassword(email, password)
+      .then(() => navio.stacks.push("Verification"));
   };
 
   return (
