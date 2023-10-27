@@ -15,7 +15,11 @@ export const Login: NavioScreen = () => {
           className="flex-1"
           secureTextEntry
         />
-        <Button link label="Forgot password?" className="self-start" />
+        <Button
+          variant="link"
+          label="Forgot password?"
+          className="self-start"
+        />
       </View>
       <View className="flex-1 justify-end">
         <Text className="text-small mb-5">

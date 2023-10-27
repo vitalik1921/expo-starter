@@ -1,5 +1,10 @@
 import cn from "classnames";
-import { Button as LibButton, View } from "react-native-ui-lib";
+import {
+  Button as LibButton,
+  View,
+  HapticService,
+  HapticType,
+} from "react-native-ui-lib";
 import { Bounceable } from "rn-bounceable";
 
 import { theme } from "@app/utils/theme";
@@ -22,13 +27,18 @@ export function Button({
   const isLink = variant === "link";
   const { buttonClasses, labelColor } = variants[variant];
 
+  const handlePress = () => {
+    // HapticService.triggerHaptic(HapticType.impactLight, "test");
+    onPress && onPress();
+  };
+
   return (
     <View className={className}>
       <Bounceable disabled={disabled}>
         <LibButton
           label={label}
           link={isLink}
-          onPress={onPress}
+          onPress={handlePress}
           activeOpacity={1}
           disabled={disabled}
           className={cn(buttonClasses, {
@@ -37,6 +47,7 @@ export function Button({
           })}
           labelStyle={{
             fontSize: parseInt(theme.fontSize.regular),
+            fontWeight: "600",
             color: disabled ? theme.colors.sky.dark : labelColor,
           }}
         />
