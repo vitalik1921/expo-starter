@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 
-import * as SplashScreen from "expo-splash-screen";
 import * as Linking from "expo-linking";
+import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
+import { observer } from "mobx-react-lite";
 import { useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { Navigation, navio } from "@app/Navigation";
+import { Navigation } from "@app/Navigation";
 import { useNavigationTheme } from "@app/utils/navigationTheme";
 import { useInitRootStore } from "@app/utils/store";
 import { supabase } from "@app/utils/supabase";
-import { observer } from "mobx-react-lite";
 
 if (__DEV__) {
   // Load Reactotron configuration in development. We don't want to

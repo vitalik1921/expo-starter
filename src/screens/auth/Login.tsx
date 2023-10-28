@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { observer } from "mobx-react-lite";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, View } from "react-native-ui-lib";
 import { NavioScreen } from "rn-navio";
@@ -8,7 +9,7 @@ import { Button, Link, LoaderScreen } from "@app/components";
 import { Input } from "@app/components/ui-kit/Input";
 import { useStores } from "@app/utils/store";
 
-export const Login: NavioScreen = () => {
+export const Login: NavioScreen = observer(() => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { auth } = useStores();
@@ -51,4 +52,4 @@ export const Login: NavioScreen = () => {
       </View>
     </SafeAreaView>
   );
-};
+});

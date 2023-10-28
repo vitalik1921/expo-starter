@@ -6,6 +6,7 @@ import {
   AuthResponse,
   Session as SupabaseSession,
 } from "@supabase/supabase-js";
+import { Alert } from "react-native";
 
 export const AuthStoreModel = types
   .model("AuthStore")
@@ -29,6 +30,8 @@ export const AuthStoreModel = types
       try {
         store.isLoading = true;
       } catch (error) {
+        Alert.alert((error as Error).message);
+        throw error;
       } finally {
         store.isLoading = false;
       }
@@ -47,6 +50,8 @@ export const AuthStoreModel = types
           user: null,
         });
       } catch (error) {
+        Alert.alert((error as Error).message);
+        throw error;
       } finally {
         store.isLoading = false;
       }
@@ -64,7 +69,8 @@ export const AuthStoreModel = types
           user: null,
         });
       } catch (error) {
-        // TODO: process error
+        Alert.alert((error as Error).message);
+        throw error;
       } finally {
         store.isLoading = false;
       }
@@ -75,6 +81,8 @@ export const AuthStoreModel = types
         yield supabase.auth.signOut();
         store.session = null;
       } catch (error) {
+        Alert.alert((error as Error).message);
+        throw error;
       } finally {
         store.isLoading = false;
       }
