@@ -10,12 +10,13 @@ import {
   languageUIToInternal,
 } from "@app/utils/enums";
 
-import { Row, Section } from "@app/components";
+import { Button, Row, Section } from "@app/components";
 import { useStores } from "@app/utils/store";
 
 export const Settings: NavioScreen = ({}) => {
   const {
     ui: { appearance, language, setAppearance, setLanguage },
+    auth,
   } = useStores();
 
   const appearanceInitialIndex = appearances.findIndex(
@@ -69,6 +70,11 @@ export const Settings: NavioScreen = ({}) => {
                 inactiveColor={Colors.textColor}
                 onChangeIndex={handleLanguageIndexChange}
               />
+            </Row>
+          </View>
+          <View paddingV-s1>
+            <Row>
+              <Button label="Log out" onPress={auth.logout} />
             </Row>
           </View>
         </Section>

@@ -32,6 +32,9 @@ export const navio = Navio.build({
         },
       },
     },
+    Main: {
+      screens: ["Settings"],
+    },
   },
   root: "Auth",
   defaultOptions: {

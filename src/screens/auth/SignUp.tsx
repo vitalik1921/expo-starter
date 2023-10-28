@@ -22,7 +22,7 @@ export const SignUp: NavioScreen = observer(() => {
   };
 
   return (
-    <SafeAreaView className="flex flex-1 flex-col p-[24] pt-[120]">
+    <SafeAreaView className="flex flex-1 flex-col p-[24] pt-[50]">
       <LoaderScreen caption="Loading..." visible={auth.isLoading} />
       <View className="flex-1">
         <Input
@@ -39,11 +39,12 @@ export const SignUp: NavioScreen = observer(() => {
           secureTextEntry
           onChange={(val) => setPassword(val)}
         />
-        <Button
-          variant="link"
-          label="Forgot password?"
-          className="self-start"
-          onPress={() => undefined}
+        <Input
+          name="pass"
+          label="Repeat the password"
+          className="flex-1"
+          secureTextEntry
+          onChange={(val) => setPassword(val)}
         />
       </View>
       <View className="flex-1 items-center justify-end">

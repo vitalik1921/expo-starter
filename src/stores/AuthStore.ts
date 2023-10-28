@@ -13,6 +13,11 @@ export const AuthStoreModel = types
     session: null as Session | null,
     isLoading: false,
   }))
+  .views((store) => ({
+    get isAuthenticated() {
+      return !!store.session;
+    },
+  }))
   .actions((store) => ({
     setLoading: (state: boolean) => {
       store.isLoading = state;
@@ -28,9 +33,19 @@ export const AuthStoreModel = types
         store.isLoading = false;
       }
     }),
-    signInWithPassword: flow(function* () {
+    signInWithPassword: flow(function* (email: string, password: string) {
       try {
         store.isLoading = true;
+        const { data, error }: AuthResponse =
+          yield supabase.auth.signInWithPassword({
+            email,
+            password,
+          });
+        if (error) throw error;
+        store.session = SessionModel.create({
+          state: data.session,
+          user: null,
+        });
       } catch (error) {
       } finally {
         store.isLoading = false;
@@ -43,11 +58,7 @@ export const AuthStoreModel = types
           email,
           password,
         });
-
-        if (error) {
-          throw error;
-        }
-
+        if (error) throw error;
         store.session = SessionModel.create({
           state: data.session,
           user: null,

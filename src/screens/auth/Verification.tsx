@@ -6,7 +6,7 @@ import { NavioScreen } from "rn-navio";
 
 export const Verification: NavioScreen = () => {
   const handleCancel = () => {
-    navio.stacks.setRoot("Auth");
+    navio.push("Login");
   };
 
   return (
@@ -17,4 +17,8 @@ export const Verification: NavioScreen = () => {
       <Button label="Cancel" variant="link" onPress={handleCancel} />
     </SafeAreaView>
   );
+};
+
+Verification.options = {
+  animation: "fade_from_bottom",
 };

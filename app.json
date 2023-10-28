@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Blytz",
+    "name": "Warpkit",
     "slug": "blitz",
     "scheme": "blitz",
     "version": "1.0.0",
@@ -18,14 +18,12 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "ai.blitz",
-      "googleServicesFile": "./config/GoogleService-Info.plist",
-      "buildNumber": "6"
+      "buildNumber": "1"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff",
-        "googleServicesFile": "./google-services.json"
+        "backgroundColor": "#ffffff"
       }
     },
     "web": {
