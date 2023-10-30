@@ -6,7 +6,7 @@ import { Bounceable } from "rn-bounceable";
 import { navio } from "@app/Navigation";
 import { theme } from "@app/utils/theme";
 
-interface ButtonProps {
+export interface ButtonProps {
   label: string;
   variant?: keyof typeof variants;
   path?: string;

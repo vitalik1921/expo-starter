@@ -41,7 +41,7 @@ export const navio = Navio.build({
       },
     },
     Main: {
-      screens: ["UIKit", "Settings"],
+      screens: ["Settings", "UIKit"],
     },
   },
   root: "Auth",

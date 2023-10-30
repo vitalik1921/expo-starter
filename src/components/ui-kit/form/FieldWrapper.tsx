@@ -8,7 +8,7 @@ interface FieldWrapperProps {
 
 export const FieldWrapper: FC<FieldWrapperProps> = ({ error, children }) => {
   return (
-    <View className="relative">
+    <View>
       {children}
       {error && <Text className="text-red-base">{error}</Text>}
     </View>

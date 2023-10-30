@@ -17,22 +17,21 @@ import { FormFieldProps } from "./props";
 interface FormInputProps<F extends FieldValues>
   extends FormFieldProps<F>,
     Omit<TextFieldProps, "name"> {
-  endAdornment?: ReactNode;
-  onEndAdornmentPress?: () => void;
+  // endAdornment?: ReactNode;
+  // onEndAdornmentPress?: () => void;
 }
 
 export function FormInput<F extends FieldValues>({
   name,
   rules,
   label,
-  endAdornment,
-  onEndAdornmentPress,
+  // endAdornment,
+  // onEndAdornmentPress,
   ...rest
 }: FormInputProps<F>) {
   const {
     control,
     formState: { errors },
-    getValues,
   } = useFormContext();
 
   if (!control) {
@@ -64,11 +63,6 @@ export function FormInput<F extends FieldValues>({
             onBlur={field.onBlur}
             {...rest}
           />
-          <View>
-            <TouchableOpacity onPress={onEndAdornmentPress}>
-              {endAdornment}
-            </TouchableOpacity>
-          </View>
         </FieldWrapper>
       )}
     />

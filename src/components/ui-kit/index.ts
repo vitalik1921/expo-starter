@@ -5,3 +5,4 @@ export * from "./Title3";
 export * from "./Link";
 export * from "./LoaderScreen";
 export * from "./Input";
+export * from "./form";

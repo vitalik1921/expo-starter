@@ -2,15 +2,11 @@ import { FC, useContext } from "react";
 
 import { useFormContext } from "react-hook-form";
 
-import { Button } from "@app/components";
+import { Button, ButtonProps } from "@app/components";
 
 import { FormContext } from "./FormWrapper";
 
-interface FormSubmitProps {
-  label: string;
-}
-
-export const FormSubmit: FC<FormSubmitProps> = ({ label }) => {
+export const FormSubmit: FC<ButtonProps> = (buttonProps) => {
   const { submit } = useContext(FormContext);
   const {
     formState: { errors },
@@ -18,5 +14,5 @@ export const FormSubmit: FC<FormSubmitProps> = ({ label }) => {
 
   const hasErrors = Object.keys(errors).length > 0;
 
-  return <Button label={label} disabled={hasErrors} onPress={submit} />;
+  return <Button {...buttonProps} disabled={hasErrors} onPress={submit} />;
 };
