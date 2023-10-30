@@ -1,15 +1,12 @@
-import { useState } from "react";
-
 import { observer } from "mobx-react-lite";
+import { Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, View } from "react-native-ui-lib";
 import { NavioScreen } from "rn-navio";
 
-import { Button, Link, LoaderScreen, useForm } from "@app/components";
-import { Input } from "@app/components/ui-kit/Input";
+import { Link, LoaderScreen, useForm } from "@app/components";
 import { navio } from "@app/Navigation";
 import { useStores } from "@app/utils/store";
-import { Alert } from "react-native";
 
 interface FormProps {
   email: string;

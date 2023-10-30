@@ -1,12 +1,12 @@
 import ky from "ky";
-import { supabaseClient } from "./supabase";
+import { supabase } from "./supabase";
 
 export const http = ky.create({
   prefixUrl: process.env.EXPO_PUBLIC_AWS_APP_URL,
   hooks: {
     beforeRequest: [
       async (request) => {
-        const session = await supabaseClient.auth.getSession();
+        const session = await supabase.auth.getSession();
         if (!request.headers.get("Authorization")) {
           request.headers.set(
             "Authorization",
