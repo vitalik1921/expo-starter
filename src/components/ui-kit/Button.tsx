@@ -33,7 +33,7 @@ export function Button({
       if (isUrl) {
         Linking.openURL(path);
       } else {
-        navio.push(path as any);
+        navio.N.navigate(path as any);
       }
       return;
     }

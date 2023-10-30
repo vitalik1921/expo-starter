@@ -49,6 +49,7 @@ export const Login: NavioScreen = observer(() => {
             variant="link"
             label="Forgot password?"
             className="self-start"
+            path="ResetPass"
           />
         </View>
         <View className="flex-1 items-center justify-end">

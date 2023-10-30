@@ -75,6 +75,34 @@ export const AuthStoreModel = types
         store.isLoading = false;
       }
     }),
+    resetPass: flow(function* (email: string) {
+      try {
+        store.isLoading = true;
+        const { error } = yield supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: "blitz://update-pass",
+        });
+        store.session = null;
+        if (error) throw error;
+      } catch (error) {
+        Alert.alert((error as Error).message);
+        throw error;
+      } finally {
+        store.isLoading = false;
+      }
+    }),
+    updatePass: flow(function* (pass: string) {
+      try {
+        store.isLoading = true;
+        const { error } = yield supabase.auth.updateUser({ password: pass });
+        store.session = null;
+        if (error) throw error;
+      } catch (error) {
+        Alert.alert((error as Error).message);
+        throw error;
+      } finally {
+        store.isLoading = false;
+      }
+    }),
     logout: flow(function* () {
       try {
         store.isLoading = true;

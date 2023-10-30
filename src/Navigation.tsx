@@ -5,6 +5,8 @@ import {
   SignUp,
   Start,
   Verification,
+  ResetPass,
+  UpdatePass,
   UIKit,
   Settings,
 } from "@app/screens";
@@ -19,13 +21,15 @@ export const navio = Navio.build({
     Start: { component: Start, options: { headerShown: false } },
     Login,
     SignUp,
+    ResetPass,
+    UpdatePass,
     Verification,
     UIKit,
     Settings,
   },
   stacks: {
     Auth: {
-      screens: ["Start", "Login", "SignUp"],
+      screens: ["Start", "Login", "SignUp", "ResetPass", "UpdatePass"],
       navigatorProps: {
         screenOptions: {
           headerShown: true,
