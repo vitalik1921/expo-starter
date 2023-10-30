@@ -1,6 +1,13 @@
 import { Navio } from "rn-navio";
 
-import { Login, SignUp, Start, Verification, Settings } from "@app/screens";
+import {
+  Login,
+  SignUp,
+  Start,
+  Verification,
+  UIKit,
+  Settings,
+} from "@app/screens";
 import {
   drawerScreenDefaultOptions,
   screenDefaultOptions,
@@ -13,6 +20,7 @@ export const navio = Navio.build({
     Login,
     SignUp,
     Verification,
+    UIKit,
     Settings,
   },
   stacks: {
@@ -33,7 +41,7 @@ export const navio = Navio.build({
       },
     },
     Main: {
-      screens: ["Settings"],
+      screens: ["UIKit", "Settings"],
     },
   },
   root: "Auth",

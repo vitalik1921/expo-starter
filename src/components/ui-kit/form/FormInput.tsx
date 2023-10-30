@@ -7,14 +7,16 @@ import {
   useFormContext,
 } from "react-hook-form";
 import { TouchableOpacity } from "react-native";
-import { Input, InputProps, Stack, styled } from "tamagui";
+import { TextFieldProps, View } from "react-native-ui-lib";
+
+import { Input } from "@app/components";
 
 import { FieldWrapper } from "./FieldWrapper";
 import { FormFieldProps } from "./props";
 
 interface FormInputProps<F extends FieldValues>
   extends FormFieldProps<F>,
-    Omit<InputProps, "name"> {
+    Omit<TextFieldProps, "name"> {
   endAdornment?: ReactNode;
   onEndAdornmentPress?: () => void;
 }
@@ -30,6 +32,7 @@ export function FormInput<F extends FieldValues>({
   const {
     control,
     formState: { errors },
+    getValues,
   } = useFormContext();
 
   if (!control) {
@@ -48,39 +51,26 @@ export function FormInput<F extends FieldValues>({
   }, [errors[name]]);
 
   return (
-    <Container>
-      <Controller
-        control={control as Control<FieldValues>}
-        name={name}
-        rules={rules}
-        render={({ field: { onChange, value, onBlur } }) => (
-          <FieldWrapper label={label} error={errorMessage}>
-            <Input
-              onChangeText={onChange}
-              onBlur={onBlur}
-              value={value}
-              paddingRight={endAdornment ? 50 : 0}
-              {...rest}
-            />
-            <EndAdormentContainer>
-              <TouchableOpacity onPress={onEndAdornmentPress}>
-                {endAdornment}
-              </TouchableOpacity>
-            </EndAdormentContainer>
-          </FieldWrapper>
-        )}
-      />
-    </Container>
+    <Controller
+      control={control as Control<FieldValues>}
+      name={name}
+      rules={rules}
+      render={({ field }) => (
+        <FieldWrapper error={errorMessage}>
+          <Input
+            label={label}
+            value={field.value}
+            onChange={(e) => field.onChange(e.nativeEvent.text)}
+            onBlur={field.onBlur}
+            {...rest}
+          />
+          <View>
+            <TouchableOpacity onPress={onEndAdornmentPress}>
+              {endAdornment}
+            </TouchableOpacity>
+          </View>
+        </FieldWrapper>
+      )}
+    />
   );
 }
-
-const Container = styled(Stack, { marginBottom: "$2" });
-const EndAdormentContainer = styled(Stack, {
-  position: "absolute",
-  top: 12,
-  right: 15,
-  alignItems: "center",
-  justifyContent: "center",
-  overflow: "hidden",
-  flexShrink: 1,
-});

@@ -11,10 +11,7 @@ import {
 
 import { FormCheckbox } from "./FormCheckbox";
 import { FormInput } from "./FormInput";
-import { FormRTFInput } from "./FormRTFInput";
-import { FormSheetSubmit } from "./FormSheetSubmit";
 import { FormSubmit } from "./FormSubmit";
-import { FormTextarea } from "./FormTextarea";
 import { FormWrapper, FormWrapperProps } from "./FormWrapper";
 
 interface UseFormArgs<F extends FieldValues> {
@@ -56,10 +53,7 @@ export function useForm<F extends FieldValues>(args?: UseFormArgs<F>) {
     }
 
     FormComponent.Input = FormInput<F>;
-    FormComponent.RTFInput = FormRTFInput<F>;
-    FormComponent.Textarea = FormTextarea<F>;
     FormComponent.Submit = FormSubmit;
-    FormComponent.FormSheetSubmit = FormSheetSubmit;
     FormComponent.Checkbox = FormCheckbox;
 
     return FormComponent;

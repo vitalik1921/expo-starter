@@ -1,8 +1,17 @@
+import { createContext } from "react";
 import { FieldValues, FormProvider, UseFormReturn } from "react-hook-form";
-import { Form, StackProps } from "tamagui";
+import { View, ViewProps } from "react-native-ui-lib";
+
+interface FormContextProps {
+  submit: () => void;
+}
+
+export const FormContext = createContext<FormContextProps>({
+  submit: () => undefined,
+});
 
 export interface FormWrapperProps<F extends FieldValues>
-  extends Omit<StackProps, "onSubmit"> {
+  extends Omit<ViewProps, "onSubmit"> {
   children?: any;
   methods: UseFormReturn<F>;
   onSubmit?: (payload: F) => void;
@@ -16,9 +25,9 @@ export function FormWrapper<F extends FieldValues>({
 }: FormWrapperProps<F>) {
   return (
     <FormProvider {...methods}>
-      <Form onSubmit={methods.handleSubmit(onSubmit)} {...props}>
-        {children}
-      </Form>
+      <FormContext.Provider value={{ submit: methods.handleSubmit(onSubmit) }}>
+        <View {...props}>{children}</View>
+      </FormContext.Provider>
     </FormProvider>
   );
 }

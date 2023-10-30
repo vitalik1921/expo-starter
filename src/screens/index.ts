@@ -3,3 +3,4 @@ export * from "./auth/Login";
 export * from "./auth/SignUp";
 export * from "./auth/Verification";
 export * from "./Settings";
+export * from "./UIKit";

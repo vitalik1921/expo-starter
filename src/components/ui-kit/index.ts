@@ -4,3 +4,4 @@ export * from "./Title2";
 export * from "./Title3";
 export * from "./Link";
 export * from "./LoaderScreen";
+export * from "./Input";

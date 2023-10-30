@@ -1,13 +1,12 @@
 import React from "react";
 
-import Checkbox from "expo-checkbox";
 import {
   Control,
   Controller,
   FieldValues,
   useFormContext,
 } from "react-hook-form";
-import { Label, XStack } from "tamagui";
+import { Checkbox, Text, View } from "react-native-ui-lib";
 
 interface FormCheckboxProps<F extends FieldValues> {
   name: string;
@@ -22,18 +21,13 @@ export function FormCheckbox<F extends FieldValues>({
   rules,
   defaultChecked = false,
 }: FormCheckboxProps<F>) {
-  const {
-    control,
-    formState: { errors },
-  } = useFormContext();
+  const { control } = useFormContext();
 
   if (!control) {
     throw new Error(
       "FormCheckbox must be used within a Form component with onSubmit handler."
     );
   }
-
-  const errorMessage = errors[name]?.message?.toString();
 
   return (
     <Controller
@@ -42,14 +36,14 @@ export function FormCheckbox<F extends FieldValues>({
       rules={rules}
       defaultValue={defaultChecked}
       render={({ field }) => (
-        <XStack alignItems="center" space="$4">
+        <View className="flex flex-row items-center">
           <Checkbox
             value={field.value}
             onValueChange={field.onChange}
             color="#6495ED"
           />
-          <Label size="$4">{label}</Label>
-        </XStack>
+          <Text>{label}</Text>
+        </View>
       )}
     />
   );

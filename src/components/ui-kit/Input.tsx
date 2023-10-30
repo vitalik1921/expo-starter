@@ -7,19 +7,21 @@ import {
   TextInputChangeEventData,
 } from "react-native";
 import { TextField } from "react-native-ui-lib";
+
 import { theme } from "@app/utils/theme";
 
 interface InputProps {
   label?: string;
-  name: string;
   keyboardType?: KeyboardTypeOptions;
   secureTextEntry?: boolean;
-  onChange?: (value: string) => void;
+  value: string;
+  onChange?: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
   className?: string;
 }
 
 export function Input({
   label = "",
+  value,
   keyboardType,
   secureTextEntry = false,
   onChange,
@@ -29,7 +31,7 @@ export function Input({
 
   const handleChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
     const newText = e.nativeEvent.text;
-    onChange && onChange(newText);
+    onChange && onChange(e);
     setHasValue(!!newText);
   };
 
@@ -37,6 +39,7 @@ export function Input({
     <TextField
       floatingPlaceholder
       placeholder={label}
+      value={value}
       onChange={handleChange}
       keyboardType={keyboardType}
       className={cn(

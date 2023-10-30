@@ -26,6 +26,9 @@ module.exports = {
         base: "#6B4EFF",
         dark: "#5538EE",
       },
+      red: {
+        base: "#FF5247",
+      },
     },
     fontSize: {
       title1: 48,
