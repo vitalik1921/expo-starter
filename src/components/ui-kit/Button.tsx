@@ -35,6 +35,7 @@ export function Button({
       } else {
         navio.push(path as any);
       }
+      return;
     }
 
     onPress && onPress();

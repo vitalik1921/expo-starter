@@ -6,7 +6,7 @@ import { NavioScreen } from "rn-navio";
 
 export const Verification: NavioScreen = () => {
   const handleCancel = () => {
-    navio.push("Login");
+    navio.stacks.push("Auth");
   };
 
   return (

@@ -16,7 +16,7 @@ export const AuthStoreModel = types
   }))
   .views((store) => ({
     get isAuthenticated() {
-      return !!store.session;
+      return !!store.session?.state;
     },
   }))
   .actions((store) => ({
@@ -78,8 +78,9 @@ export const AuthStoreModel = types
     logout: flow(function* () {
       try {
         store.isLoading = true;
-        yield supabase.auth.signOut();
+        const { error } = yield supabase.auth.signOut();
         store.session = null;
+        if (error) throw error;
       } catch (error) {
         Alert.alert((error as Error).message);
         throw error;

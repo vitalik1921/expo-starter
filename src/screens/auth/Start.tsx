@@ -26,10 +26,9 @@ export const Start: NavioScreen = () => {
         </View>
         <View className="flex-1 items-center justify-end">
           <Button
-            label="Create account"
             path="SignUp"
+            label="Create account"
             className="w-[182] mb-[24]"
-            onPress={() => null}
           />
           <Text className="text-regular font-light">
             Have an account? <Link path="Login">Log in</Link>
