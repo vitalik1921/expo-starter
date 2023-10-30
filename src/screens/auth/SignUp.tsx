@@ -1,60 +1,83 @@
 import { useState } from "react";
 
+import { observer } from "mobx-react-lite";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, View } from "react-native-ui-lib";
 import { NavioScreen } from "rn-navio";
 
-import { Button, Link, LoaderScreen } from "@app/components";
+import { Button, Link, LoaderScreen, useForm } from "@app/components";
 import { Input } from "@app/components/ui-kit/Input";
-import { observer } from "mobx-react-lite";
-import { useStores } from "@app/utils/store";
 import { navio } from "@app/Navigation";
+import { useStores } from "@app/utils/store";
+import { Alert } from "react-native";
+
+interface FormProps {
+  email: string;
+  pass: string;
+  passRepeat: string;
+}
 
 export const SignUp: NavioScreen = observer(() => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const { Form } = useForm<FormProps>();
   const { auth } = useStores();
 
-  const handleSignUp = () => {
+  const handleSignUp = ({ email, pass, passRepeat }: FormProps) => {
+    if (pass !== passRepeat) {
+      Alert.alert(
+        "Passwords entered do not match. Please ensure they are the same."
+      );
+      return;
+    }
     auth
-      .signUpWithPassword(email, password)
+      .signUpWithPassword(email, pass)
       .then(() => navio.stacks.push("Verification"));
   };
 
   return (
     <SafeAreaView className="flex flex-1 flex-col p-[24] pt-[50]">
-      <LoaderScreen caption="Loading..." visible={auth.isLoading} />
-      <View className="flex-1">
-        <Input
-          name="email"
-          label="Email"
-          keyboardType="email-address"
-          className="flex-1"
-          onChange={(val) => setEmail(val)}
-        />
-        <Input
-          name="pass"
-          label="Password"
-          className="flex-1"
-          secureTextEntry
-          onChange={(val) => setPassword(val)}
-        />
-        <Input
-          name="pass"
-          label="Repeat the password"
-          className="flex-1"
-          secureTextEntry
-          onChange={(val) => setPassword(val)}
-        />
-      </View>
-      <View className="flex-1 items-center justify-end">
-        <Text className="text-regular font-light mb-[24]">
-          By continuing, you agree to our{" "}
-          <Link path="https://google.com">Terms</Link> of{" "}
-          <Link path="https://google.com">Service and Privacy</Link> Policy.
-        </Text>
-        <Button label="Sign up" onPress={handleSignUp} />
-      </View>
+      <Form className="flex-1" onSubmit={handleSignUp}>
+        <LoaderScreen caption="Loading..." visible={auth.isLoading} />
+        <View className="flex-1">
+          <Form.Input
+            name="email"
+            label="Email"
+            rules={{
+              required: true,
+              pattern: {
+                value:
+                  /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}(\s*;\s*[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,})*$/,
+                message: "Invalid email addresses",
+              },
+            }}
+            keyboardType="email-address"
+            className="flex-1"
+          />
+          <Form.Input
+            name="pass"
+            label="Password"
+            rules={{ required: true }}
+            className="flex-1"
+            secureTextEntry
+            textContentType="oneTimeCode"
+          />
+          <Form.Input
+            name="passRepeat"
+            label="Repeat the password"
+            rules={{ required: true }}
+            className="flex-1"
+            secureTextEntry
+            textContentType="oneTimeCode"
+          />
+        </View>
+        <View className="flex-1 items-center justify-end">
+          <Text className="text-regular font-light mb-[24]">
+            By continuing, you agree to our{" "}
+            <Link path="https://google.com">Terms</Link> of{" "}
+            <Link path="https://google.com">Service and Privacy</Link> Policy.
+          </Text>
+          <Form.Submit label="Sign up" />
+        </View>
+      </Form>
     </SafeAreaView>
   );
 });
