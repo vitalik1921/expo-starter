@@ -62,7 +62,7 @@ export const useInitRootStore = (callback?: () => void | Promise<void>) => {
 
       // reactotron integration with the MST root store (DEV only)
       if (__DEV__) {
-        // console.warn(rootStore)
+        console.warn(rootStore)
       }
 
       // let the app know we've finished rehydrating

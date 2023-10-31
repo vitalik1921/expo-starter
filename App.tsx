@@ -59,11 +59,15 @@ function App() {
           navigationContainerProps={{
             theme: navigationTheme.navigationTheme,
             linking: {
-              prefixes: ["blitz://"],
+              prefixes: [Linking.createURL("/")],
               config: {
                 screens: {
-                  Login: "verification",
-                  UpdatePass: "update-pass",
+                  Auth: {
+                    screens: {
+                      Login: "verification",
+                      UpdatePass: "update-pass",
+                    },
+                  },
                 },
               },
             },

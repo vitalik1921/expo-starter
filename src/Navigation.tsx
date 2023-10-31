@@ -23,24 +23,23 @@ export const navio = Navio.build({
     SignUp,
     ResetPass,
     UpdatePass,
-    Verification,
+    Verification: { component: Verification, options: { headerShown: false } },
     UIKit,
     Settings,
   },
   stacks: {
     Auth: {
-      screens: ["Start", "Login", "SignUp", "ResetPass", "UpdatePass"],
+      screens: [
+        "Start",
+        "Login",
+        "SignUp",
+        "ResetPass",
+        "UpdatePass",
+        "Verification",
+      ],
       navigatorProps: {
         screenOptions: {
           headerShown: true,
-        },
-      },
-    },
-    Verification: {
-      screens: ["Verification"],
-      navigatorProps: {
-        screenOptions: {
-          headerShown: false,
         },
       },
     },

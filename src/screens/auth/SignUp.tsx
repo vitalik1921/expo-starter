@@ -25,9 +25,7 @@ export const SignUp: NavioScreen = observer(() => {
       );
       return;
     }
-    auth
-      .signUpWithPassword(email, pass)
-      .then(() => navio.stacks.push("Verification"));
+    auth.signUpWithPassword(email, pass).then(() => navio.push("Verification"));
   };
 
   return (

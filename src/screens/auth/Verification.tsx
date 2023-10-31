@@ -20,5 +20,6 @@ export const Verification: NavioScreen = () => {
 };
 
 Verification.options = {
+  headerShown: false,
   animation: "fade_from_bottom",
 };
