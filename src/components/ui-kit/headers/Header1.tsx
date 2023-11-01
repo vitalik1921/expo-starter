@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import { User } from "iconoir-react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Text, View } from "react-native-ui-lib";
+import { Avatar, Text, View } from "react-native-ui-lib";
 import { Bounceable } from "rn-bounceable";
 
 type Header1Props = {
@@ -19,7 +19,12 @@ export const Header1: FC<Header1Props> = ({ rightButtonPress }) => {
     >
       <Text className="text-title3 font-bold">Dashboard</Text>
       <Bounceable>
-        <User onPress={rightButtonPress} />
+        <Avatar
+          source={{
+            uri: "https://lh3.googleusercontent.com/-cw77lUnOvmI/AAAAAAAAAAI/AAAAAAAAAAA/WMNck32dKbc/s181-c/104220521160525129167.jpg",
+          }}
+          size={32}
+        />
       </Bounceable>
     </View>
   );
