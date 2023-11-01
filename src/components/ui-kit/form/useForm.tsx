@@ -14,11 +14,11 @@ import { FormInput } from "./FormInput";
 import { FormSubmit } from "./FormSubmit";
 import { FormWrapper, FormWrapperProps } from "./FormWrapper";
 
-interface UseFormArgs<F extends FieldValues> {
+type UseFormArgs<F extends FieldValues> = {
   defaultValues?: DeepPartial<F>;
   validate?: Validation<F>;
   watch?: Path<F>[];
-}
+};
 
 export function useForm<F extends FieldValues>(args?: UseFormArgs<F>) {
   const defaultValues = args?.defaultValues,

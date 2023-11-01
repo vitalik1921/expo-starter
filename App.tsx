@@ -7,12 +7,14 @@ import { observer } from "mobx-react-lite";
 import { Alert, useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { IconoirProvider } from "iconoir-react-native";
 
 import { Navigation } from "@app/Navigation";
 import { useNavigationTheme } from "@app/utils/navigationTheme";
 import { useInitRootStore } from "@app/utils/store";
 import { supabase } from "@app/utils/supabase";
 import { getStateFromPath as _getStateFromPath } from "@react-navigation/native";
+import { theme } from "@app/utils/theme";
 
 if (__DEV__) {
   // Load Reactotron configuration in development. We don't want to
@@ -55,32 +57,41 @@ function App() {
           style={navigationTheme.statusBarStyle}
           backgroundColor={navigationTheme.statusBarBGColor}
         />
-        <Navigation
-          root={auth.isAuthenticated ? "Main" : "Auth"}
-          navigationContainerProps={{
-            theme: navigationTheme.navigationTheme,
-            linking: {
-              prefixes: [Linking.createURL("/")],
-              subscribe: customURLListener,
-              config: {
-                screens: {
-                  Auth: {
-                    path: "app",
-                    screens: {
-                      Login: "verification",
+        <IconoirProvider
+          iconProps={{
+            color: theme.colors.ink.darkest,
+            strokeWidth: 2,
+            width: "24",
+            height: "24",
+          }}
+        >
+          <Navigation
+            root={auth.isAuthenticated ? "Main" : "Auth"}
+            navigationContainerProps={{
+              theme: navigationTheme.navigationTheme,
+              linking: {
+                prefixes: [Linking.createURL("/")],
+                subscribe: customURLListener,
+                config: {
+                  screens: {
+                    Auth: {
+                      path: "app",
+                      screens: {
+                        Login: "verification",
+                      },
                     },
-                  },
-                  Main: {
-                    path: "main",
-                    screens: {
-                      UpdatePass: "update-pass",
+                    Main: {
+                      path: "main",
+                      screens: {
+                        UpdatePass: "update-pass",
+                      },
                     },
                   },
                 },
               },
-            },
-          }}
-        />
+            }}
+          />
+        </IconoirProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );

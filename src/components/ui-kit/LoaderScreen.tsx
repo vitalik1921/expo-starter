@@ -2,10 +2,10 @@ import { LoaderScreen as LibLoaderScreen } from "react-native-ui-lib";
 
 import { theme } from "@app/utils/theme";
 
-interface LoaderScreenProps {
+type LoaderScreenProps = {
   caption: string;
   visible: boolean;
-}
+};
 
 export function LoaderScreen({ visible, caption }: LoaderScreenProps) {
   if (!visible) return null;

@@ -1,12 +1,12 @@
 import { useForm } from "@app/components/ui-kit/form";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-interface FormState {
+type FormState = {
   field1: string;
   field2: string;
   field3: string;
   checkboxState: boolean;
-}
+};
 
 export function UIKit() {
   const { Form } = useForm<FormState>({

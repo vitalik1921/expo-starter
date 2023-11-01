@@ -10,7 +10,7 @@ import { TextField } from "react-native-ui-lib";
 
 import { theme } from "@app/utils/theme";
 
-interface InputProps {
+type InputProps = {
   label?: string;
   keyboardType?: KeyboardTypeOptions;
   secureTextEntry?: boolean;

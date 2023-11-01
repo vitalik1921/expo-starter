@@ -20,5 +20,5 @@ export const UIStoreModel = types
     },
   }));
 
-export interface UIStore extends Instance<typeof UIStoreModel> {}
-export interface UIStoreSnapshot extends SnapshotOut<typeof UIStoreModel> {}
+export type UIStore = {} & Instance<typeof UIStoreModel>;
+export type UIStoreSnapshot = {} & SnapshotOut<typeof UIStoreModel>;

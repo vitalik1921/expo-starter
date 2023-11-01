@@ -8,12 +8,12 @@ import {
 } from "react-hook-form";
 import { Checkbox, Text, View } from "react-native-ui-lib";
 
-interface FormCheckboxProps<F extends FieldValues> {
+type FormCheckboxProps<F extends FieldValues> = {
   name: string;
   label: string;
   rules?: Record<string, any>;
   defaultChecked?: boolean;
-}
+};
 
 export function FormCheckbox<F extends FieldValues>({
   name,

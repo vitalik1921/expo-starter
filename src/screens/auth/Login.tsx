@@ -6,10 +6,10 @@ import { NavioScreen } from "rn-navio";
 import { Button, Link, LoaderScreen, useForm } from "@app/components";
 import { useStores } from "@app/utils/store";
 
-interface FormProps {
+type FormProps = {
   email: string;
   pass: string;
-}
+};
 
 export const Login: NavioScreen = observer(() => {
   const { Form } = useForm<FormProps>();

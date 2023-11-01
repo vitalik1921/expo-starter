@@ -7,13 +7,13 @@ import {
   Validate,
 } from "react-hook-form";
 
-interface FormFieldClasses {
+type FormFieldClasses = {
   container: string;
   label: string;
   asterisk: string;
   input: string;
   helperText: string;
-}
+};
 
 // front facing rules type where "required" is unused
 export type FormFieldValidation<V extends any = any> = Record<
@@ -25,7 +25,7 @@ export type FormFieldRules<F extends FieldValues, V extends any = any> = Omit<
   "required" | "validate"
 > & { validate?: FormFieldValidation<V> };
 
-export interface FormFieldProps<F extends FieldValues = FieldValues> {
+export type FormFieldProps<F extends FieldValues = FieldValues> = {
   name: FieldPath<F>;
   rules?: FormFieldRules<F> &
     Pick<RegisterOptions<F, FieldPath<F>>, "required">;
@@ -34,4 +34,4 @@ export interface FormFieldProps<F extends FieldValues = FieldValues> {
   helperText?: ReactNode;
   classes?: Partial<FormFieldClasses>;
   className?: string;
-}
+};

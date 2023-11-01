@@ -7,9 +7,9 @@ import { Button, LoaderScreen, useForm } from "@app/components";
 import { useStores } from "@app/utils/store";
 import { useState } from "react";
 
-interface FormProps {
+type FormProps = {
   email: string;
-}
+};
 
 export const ResetPass: NavioScreen = observer(() => {
   const { Form } = useForm<FormProps>();

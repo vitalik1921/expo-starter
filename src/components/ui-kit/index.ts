@@ -6,3 +6,4 @@ export * from "./Link";
 export * from "./LoaderScreen";
 export * from "./Input";
 export * from "./form";
+export * from "./headers";

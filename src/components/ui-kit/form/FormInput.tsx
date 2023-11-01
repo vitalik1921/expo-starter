@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from "react";
+import React, { useMemo } from "react";
 
 import {
   Control,
@@ -6,20 +6,18 @@ import {
   FieldValues,
   useFormContext,
 } from "react-hook-form";
-import { TouchableOpacity } from "react-native";
-import { TextFieldProps, View } from "react-native-ui-lib";
+import { TextFieldProps } from "react-native-ui-lib";
 
 import { Input } from "@app/components";
 
 import { FieldWrapper } from "./FieldWrapper";
 import { FormFieldProps } from "./props";
 
-interface FormInputProps<F extends FieldValues>
-  extends FormFieldProps<F>,
-    Omit<TextFieldProps, "name"> {
+type FormInputProps<F extends FieldValues> = {
   // endAdornment?: ReactNode;
   // onEndAdornmentPress?: () => void;
-}
+} & FormFieldProps<F> &
+  Omit<TextFieldProps, "name">;
 
 export function FormInput<F extends FieldValues>({
   name,

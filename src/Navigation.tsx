@@ -1,15 +1,18 @@
 import { Navio } from "rn-navio";
 
+import { Header1 } from "@app/components";
 import {
+  Dashboard,
   Login,
+  ResetPass,
+  Settings,
   SignUp,
   Start,
-  Verification,
-  ResetPass,
-  UpdatePass,
   UIKit,
-  Settings,
+  UpdatePass,
+  Verification,
 } from "@app/screens";
+
 import {
   drawerScreenDefaultOptions,
   screenDefaultOptions,
@@ -25,6 +28,13 @@ export const navio = Navio.build({
     UpdatePass,
     Verification: { component: Verification, options: { headerShown: false } },
     UIKit,
+    Dashboard: {
+      component: Dashboard,
+      options: {
+        header: () => <Header1 />,
+        headerTitle: "",
+      },
+    },
     Settings,
   },
   stacks: {
@@ -37,7 +47,7 @@ export const navio = Navio.build({
       },
     },
     Main: {
-      screens: ["Settings", "UIKit", "UpdatePass"],
+      screens: ["Dashboard", "Settings", "UIKit", "UpdatePass"],
     },
   },
   root: "Auth",

@@ -6,10 +6,10 @@ import { Text } from "react-native-ui-lib";
 
 import { navio } from "@app/Navigation";
 
-interface LinkProps extends PropsWithChildren {
+type LinkProps = {
   path: string;
   className?: string;
-}
+} & PropsWithChildren;
 
 export function Link({ path, className, children }: LinkProps) {
   const handlePress = () => {

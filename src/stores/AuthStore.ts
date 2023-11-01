@@ -118,5 +118,5 @@ export const AuthStoreModel = types
     }),
   }));
 
-export interface AuthStore extends Instance<typeof AuthStoreModel> {}
-export interface AuthStoreSnapshot extends SnapshotOut<typeof AuthStoreModel> {}
+export type AuthStore = {} & Instance<typeof AuthStoreModel>;
+export type AuthStoreSnapshot = {} & SnapshotOut<typeof AuthStoreModel>;

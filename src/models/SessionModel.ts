@@ -7,5 +7,5 @@ export const SessionModel = types.model("SessionModel").props({
   user: types.maybeNull(UserModel),
 });
 
-export interface Session extends Instance<typeof SessionModel> {}
-export interface SessionSnapshot extends SnapshotOut<typeof SessionModel> {}
+export type Session = {} & Instance<typeof SessionModel>;
+export type SessionSnapshot = {} & SnapshotOut<typeof SessionModel>;

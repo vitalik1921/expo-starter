@@ -8,11 +8,11 @@ import { Link, LoaderScreen, useForm } from "@app/components";
 import { navio } from "@app/Navigation";
 import { useStores } from "@app/utils/store";
 
-interface FormProps {
+type FormProps = {
   email: string;
   pass: string;
   passRepeat: string;
-}
+};
 
 export const SignUp: NavioScreen = observer(() => {
   const { Form } = useForm<FormProps>();
