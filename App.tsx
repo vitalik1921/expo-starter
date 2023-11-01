@@ -66,7 +66,7 @@ function App() {
           }}
         >
           <Navigation
-            root={auth.isAuthenticated ? "Main" : "Auth"}
+            root={auth.isAuthenticated ? "Dashboard" : "Auth"}
             navigationContainerProps={{
               theme: navigationTheme.navigationTheme,
               linking: {
@@ -101,7 +101,6 @@ const customURLListener = (listener: (url: string) => void) => {
   const onReceiveURL = ({ url }: { url: string }) => {
     if (url.indexOf("#") !== -1) {
       const chunks = url.split("#");
-      console.log("chunks", chunks);
       const _url = chunks[0];
       const paramsStr = chunks[1];
       const params = paramsStr.split("&").reduce((acc, curr) => {

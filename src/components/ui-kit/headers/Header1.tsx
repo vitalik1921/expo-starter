@@ -6,10 +6,10 @@ import { Avatar, Text, View } from "react-native-ui-lib";
 import { Bounceable } from "rn-bounceable";
 
 type Header1Props = {
-  rightButtonPress: () => void;
+  onRightButtonPress: () => void;
 };
 
-export const Header1: FC<Header1Props> = ({ rightButtonPress }) => {
+export const Header1: FC<Header1Props> = ({ onRightButtonPress }) => {
   const { top } = useSafeAreaInsets();
 
   return (
@@ -20,6 +20,7 @@ export const Header1: FC<Header1Props> = ({ rightButtonPress }) => {
       <Text className="text-title3 font-bold">Dashboard</Text>
       <Bounceable>
         <Avatar
+          onPress={onRightButtonPress}
           source={{
             uri: "https://lh3.googleusercontent.com/-cw77lUnOvmI/AAAAAAAAAAI/AAAAAAAAAAA/WMNck32dKbc/s181-c/104220521160525129167.jpg",
           }}

@@ -38,3 +38,7 @@ export const Start: NavioScreen = () => {
     </SafeAreaView>
   );
 };
+
+Start.options = {
+  headerShown: false,
+};

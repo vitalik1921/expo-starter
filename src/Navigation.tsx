@@ -1,6 +1,5 @@
 import { Navio } from "rn-navio";
 
-import { Header1 } from "@app/components";
 import {
   Dashboard,
   Login,
@@ -8,7 +7,8 @@ import {
   Settings,
   SignUp,
   Start,
-  UIKit,
+  Tab2,
+  Tab3,
   UpdatePass,
   Verification,
 } from "@app/screens";
@@ -21,24 +21,19 @@ import {
 
 export const navio = Navio.build({
   screens: {
-    Start: { component: Start, options: { headerShown: false } },
+    Start,
     Login,
     SignUp,
     ResetPass,
+    Verification,
+    Dashboard,
+    Tab2,
+    Tab3,
     UpdatePass,
-    Verification: { component: Verification, options: { headerShown: false } },
-    UIKit,
-    Dashboard: {
-      component: Dashboard,
-      options: {
-        header: () => <Header1 />,
-        headerTitle: "",
-      },
-    },
     Settings,
   },
   stacks: {
-    Auth: {
+    AuthStack: {
       screens: ["Start", "Login", "SignUp", "ResetPass", "Verification"],
       navigatorProps: {
         screenOptions: {
@@ -46,8 +41,29 @@ export const navio = Navio.build({
         },
       },
     },
-    Main: {
-      screens: ["Dashboard", "Settings", "UIKit", "UpdatePass"],
+  },
+  tabs: {
+    Dashboard: {
+      content: {
+        DashboardTab: {
+          stack: ["Dashboard", "Settings", "UpdatePass"],
+          options: () => ({
+            title: "Home",
+          }),
+        },
+        Tab2: {
+          stack: ["Tab2"],
+          options: () => ({
+            title: "Tab2",
+          }),
+        },
+        Tab3: {
+          stack: ["Tab3"],
+          options: () => ({
+            title: "Tab3",
+          }),
+        },
+      },
     },
   },
   root: "Auth",
