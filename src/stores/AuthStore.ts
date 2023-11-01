@@ -62,6 +62,7 @@ export const AuthStoreModel = types
         const { data, error }: AuthResponse = yield supabase.auth.signUp({
           email,
           password,
+          options: { emailRedirectTo: "blitz://app/verification" },
         });
         if (error) throw error;
         store.session = SessionModel.create({
@@ -79,7 +80,7 @@ export const AuthStoreModel = types
       try {
         store.isLoading = true;
         const { error } = yield supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: "blitz://update-pass",
+          redirectTo: "blitz://main/update-pass",
         });
         store.session = null;
         if (error) throw error;
@@ -94,7 +95,6 @@ export const AuthStoreModel = types
       try {
         store.isLoading = true;
         const { error } = yield supabase.auth.updateUser({ password: pass });
-        store.session = null;
         if (error) throw error;
       } catch (error) {
         Alert.alert((error as Error).message);

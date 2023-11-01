@@ -29,14 +29,7 @@ export const navio = Navio.build({
   },
   stacks: {
     Auth: {
-      screens: [
-        "Start",
-        "Login",
-        "SignUp",
-        "ResetPass",
-        "UpdatePass",
-        "Verification",
-      ],
+      screens: ["Start", "Login", "SignUp", "ResetPass", "Verification"],
       navigatorProps: {
         screenOptions: {
           headerShown: true,
@@ -44,7 +37,7 @@ export const navio = Navio.build({
       },
     },
     Main: {
-      screens: ["Settings", "UIKit"],
+      screens: ["Settings", "UIKit", "UpdatePass"],
     },
   },
   root: "Auth",

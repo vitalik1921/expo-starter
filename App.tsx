@@ -4,7 +4,7 @@ import * as Linking from "expo-linking";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { observer } from "mobx-react-lite";
-import { useColorScheme } from "react-native";
+import { Alert, useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
@@ -12,6 +12,7 @@ import { Navigation } from "@app/Navigation";
 import { useNavigationTheme } from "@app/utils/navigationTheme";
 import { useInitRootStore } from "@app/utils/store";
 import { supabase } from "@app/utils/supabase";
+import { getStateFromPath as _getStateFromPath } from "@react-navigation/native";
 
 if (__DEV__) {
   // Load Reactotron configuration in development. We don't want to
@@ -60,11 +61,18 @@ function App() {
             theme: navigationTheme.navigationTheme,
             linking: {
               prefixes: [Linking.createURL("/")],
+              subscribe: customURLListener,
               config: {
                 screens: {
                   Auth: {
+                    path: "app",
                     screens: {
                       Login: "verification",
+                    },
+                  },
+                  Main: {
+                    path: "main",
+                    screens: {
                       UpdatePass: "update-pass",
                     },
                   },
@@ -77,5 +85,52 @@ function App() {
     </GestureHandlerRootView>
   );
 }
+
+const customURLListener = (listener: (url: string) => void) => {
+  const onReceiveURL = ({ url }: { url: string }) => {
+    if (url.indexOf("#") !== -1) {
+      const chunks = url.split("#");
+      console.log("chunks", chunks);
+      const _url = chunks[0];
+      const paramsStr = chunks[1];
+      const params = paramsStr.split("&").reduce((acc, curr) => {
+        const chunks = curr.split("=");
+        const key = chunks[0];
+        const value = chunks[1];
+        acc[key] = value;
+        return acc;
+      }, {} as Record<string, string>);
+
+      if ("error" in params && "error_description" in params) {
+        Alert.alert(params["error_description"].split("+").join(" "));
+        return;
+      }
+
+      if ("access_token" in params && "refresh_token" in params) {
+        supabase.auth
+          .setSession({
+            access_token: params["access_token"],
+            refresh_token: params["refresh_token"],
+          })
+          .then(() =>
+            setTimeout(() => {
+              if (_url.indexOf("update-pass") !== -1) {
+                listener(_url);
+              }
+            }, 0)
+          );
+        return;
+      }
+    }
+    listener(url);
+  };
+
+  const eventListenerSubscription = Linking.addEventListener(
+    "url",
+    onReceiveURL
+  );
+
+  return () => eventListenerSubscription.remove();
+};
 
 export default observer(App);

@@ -24,7 +24,10 @@ export const UpdatePass: NavioScreen = observer(() => {
       );
       return;
     }
-    auth.updatePass(pass).then(() => navio.N.navigate("Login"));
+    auth.updatePass(pass).then(() => {
+      console.warn("we here");
+      navio.N.navigate("Settings");
+    });
   };
 
   return (
@@ -58,5 +61,5 @@ export const UpdatePass: NavioScreen = observer(() => {
 });
 
 UpdatePass.options = {
-  title: "Reset password",
+  title: "Update password",
 };
