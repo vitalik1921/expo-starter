@@ -4,7 +4,7 @@ import { Text } from "react-native-ui-lib";
 
 export const Tab3: FC = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView className="flex-1">
       <Text>Tab3</Text>
     </SafeAreaView>
   );
