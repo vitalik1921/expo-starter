@@ -8,7 +8,7 @@ import { navio } from "@app/Navigation";
 export const Dashboard: NavioScreen = () => {
   return (
     <SafeAreaView className="flex flex-1">
-      <Text></Text>
+      <Text>Test</Text>
     </SafeAreaView>
   );
 };

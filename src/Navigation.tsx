@@ -35,29 +35,33 @@ export const navio = Navio.build({
   stacks: {
     AuthStack: {
       screens: ["Start", "Login", "SignUp", "ResetPass", "Verification"],
-      navigatorProps: {
-        screenOptions: {
-          headerShown: true,
-        },
-      },
+    },
+    DashboardStack: {
+      screens: ["Dashboard", "Settings", "UpdatePass"],
+    },
+    Tab2Stack: {
+      screens: ["Tab2"],
+    },
+    Tab3Stack: {
+      screens: ["Tab3"],
     },
   },
   tabs: {
-    Dashboard: {
+    DashboardTabs: {
       content: {
         DashboardTab: {
-          stack: ["Dashboard", "Settings", "UpdatePass"],
+          stack: "DashboardStack",
           options: () => ({
             title: "Home",
           }),
         },
-        Tab2: {
-          stack: ["Tab2"],
+        Tab2Tab: {
+          stack: "Tab2Stack",
           options: () => ({
             title: "Tab2",
           }),
         },
-        Tab3: {
+        Tab3Tab: {
           stack: ["Tab3"],
           options: () => ({
             title: "Tab3",

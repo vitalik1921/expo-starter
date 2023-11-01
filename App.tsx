@@ -66,7 +66,7 @@ function App() {
           }}
         >
           <Navigation
-            root={auth.isAuthenticated ? "Dashboard" : "Auth"}
+            root={auth.isAuthenticated ? "DashboardTabs" : "Auth"}
             navigationContainerProps={{
               theme: navigationTheme.navigationTheme,
               linking: {

@@ -18,9 +18,8 @@ export const Header1: FC<Header1Props> = ({ onRightButtonPress }) => {
       style={{ marginTop: top }}
     >
       <Text className="text-title3 font-bold">Dashboard</Text>
-      <Bounceable>
+      <Bounceable onPress={onRightButtonPress}>
         <Avatar
-          onPress={onRightButtonPress}
           source={{
             uri: "https://lh3.googleusercontent.com/-cw77lUnOvmI/AAAAAAAAAAI/AAAAAAAAAAA/WMNck32dKbc/s181-c/104220521160525129167.jpg",
           }}
