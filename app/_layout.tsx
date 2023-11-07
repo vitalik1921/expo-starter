@@ -13,7 +13,10 @@ import { useNavigationTheme } from "@app/utils/navigationTheme";
 import { useInitRootStore } from "@app/utils/store";
 import { supabase } from "@app/utils/supabase";
 import { theme } from "@app/utils/theme";
-import { getStateFromPath as _getStateFromPath } from "@react-navigation/native";
+import {
+  ThemeProvider,
+  getStateFromPath as _getStateFromPath,
+} from "@react-navigation/native";
 
 if (__DEV__) {
   // Load Reactotron configuration in development. We don't want to
@@ -41,7 +44,7 @@ export const RootLayout = () => {
 
   useEffect(() => {
     if (isReady) {
-      router.replace(auth.isAuthenticated ? "/dashboard" : "/auth/login");
+      router.replace(auth.isAuthenticated ? "/dashboard" : "/auth/start");
       SplashScreen.hideAsync();
     }
   }, [isReady]);
@@ -65,7 +68,9 @@ export const RootLayout = () => {
             height: "24",
           }}
         >
-          <Slot />
+          <ThemeProvider value={navigationTheme.navigationTheme}>
+            <Slot />
+          </ThemeProvider>
           {/* <Navigation
             root={auth.isAuthenticated ? "DashboardTabs" : "Auth"}
             navigationContainerProps={{

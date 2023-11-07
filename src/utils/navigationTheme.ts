@@ -3,13 +3,12 @@ import { useMemo } from "react";
 import { StatusBarStyle } from "expo-status-bar";
 import { Appearance, Platform } from "react-native";
 
+import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
 import { DarkTheme, DefaultTheme, Theme } from "@react-navigation/native";
+import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 
 import { _rootStore, useStores } from "./store";
 import { theme } from "./theme";
-import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
-import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
-import { DrawerNavigationOptions } from "@react-navigation/drawer";
 
 export function useNavigationTheme() {
   const { ui } = useStores();
@@ -115,4 +114,4 @@ export const tabScreenDefaultOptions = (): BottomTabNavigationOptions => ({
   },
 });
 
-export const drawerScreenDefaultOptions = (): DrawerNavigationOptions => ({});
+export const drawerScreenDefaultOptions = () => ({});

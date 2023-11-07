@@ -30,7 +30,7 @@ export const Start = () => {
             className="w-[182] mb-[24]"
           />
           <Text className="text-regular font-light">
-            Have an account? <Link path="Login">Log in</Link>
+            Have an account? <Link path="/auth/login">Log in</Link>
           </Text>
         </View>
       </View>
