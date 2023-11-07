@@ -62,7 +62,7 @@ export const AuthStoreModel = types
         const { data, error }: AuthResponse = yield supabase.auth.signUp({
           email,
           password,
-          options: { emailRedirectTo: "blitz://app/verification" },
+          options: { emailRedirectTo: "warpkit://app/verification" },
         });
         if (error) throw error;
         store.session = SessionModel.create({
@@ -80,7 +80,7 @@ export const AuthStoreModel = types
       try {
         store.isLoading = true;
         const { error } = yield supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: "blitz://main/update-pass",
+          redirectTo: "warpkit://main/update-pass",
         });
         store.session = null;
         if (error) throw error;

@@ -1,14 +1,14 @@
 {
   "expo": {
     "name": "Warpkit",
-    "slug": "blitz",
-    "scheme": "blitz",
+    "slug": "warpkit",
+    "scheme": "warpkit",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./src/assets/splash.png",
       "resizeMode": "cover",
       "backgroundColor": "#00034D"
     },
@@ -17,29 +17,29 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "ai.blitz",
+      "bundleIdentifier": "com.warpkit",
       "buildNumber": "1"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "bundler": "metro",
-      "favicon": "./assets/favicon.png"
+      "favicon": "./src/assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "bda08bc8-4390-4f33-a99e-c04ef507760c"
+        "projectId": "da6fec3f-b041-48ed-8c62-db407ad3558a"
       }
     },
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/bda08bc8-4390-4f33-a99e-c04ef507760c"
+      "url": "https://u.expo.dev/da6fec3f-b041-48ed-8c62-db407ad3558a"
     },
     "plugins": [
       "expo-router"
