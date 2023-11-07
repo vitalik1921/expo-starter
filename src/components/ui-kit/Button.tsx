@@ -3,7 +3,7 @@ import * as Linking from "expo-linking";
 import { Button as LibButton, View } from "react-native-ui-lib";
 import { Bounceable } from "rn-bounceable";
 
-import { navio } from "@app/Navigation";
+// import { navio } from "@app/Navigation";
 import { theme } from "@app/utils/theme";
 
 export type ButtonProps = {
@@ -33,7 +33,7 @@ export function Button({
       if (isUrl) {
         Linking.openURL(path);
       } else {
-        navio.N.navigate(path as any);
+        // navio.N.navigate(path as any);
       }
       return;
     }

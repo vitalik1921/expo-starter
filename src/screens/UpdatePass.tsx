@@ -2,10 +2,9 @@ import { observer } from "mobx-react-lite";
 import { Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View } from "react-native-ui-lib";
-import { NavioScreen } from "rn-navio";
 
 import { LoaderScreen, useForm } from "@app/components";
-import { navio } from "@app/Navigation";
+// import { navio } from "@app/Navigation";
 import { useStores } from "@app/utils/store";
 
 type FormProps = {
@@ -13,7 +12,7 @@ type FormProps = {
   passRepeat: string;
 };
 
-export const UpdatePass: NavioScreen = observer(() => {
+export const UpdatePass = observer(() => {
   const { Form } = useForm<FormProps>();
   const { auth } = useStores();
 
@@ -26,7 +25,7 @@ export const UpdatePass: NavioScreen = observer(() => {
     }
     auth.updatePass(pass).then(() => {
       console.warn("we here");
-      navio.N.navigate("Settings");
+      // navio.N.navigate("Settings");
     });
   };
 
@@ -60,6 +59,6 @@ export const UpdatePass: NavioScreen = observer(() => {
   );
 });
 
-UpdatePass.options = {
-  title: "Update password",
-};
+// UpdatePass.options = {
+//   title: "Update password",
+// };

@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, View } from "react-native-ui-lib";
-import { NavioScreen } from "rn-navio";
 
 import { Button, LoaderScreen, useForm } from "@app/components";
 import { useStores } from "@app/utils/store";
@@ -11,7 +10,7 @@ type FormProps = {
   email: string;
 };
 
-export const ResetPass: NavioScreen = observer(() => {
+export const ResetPass = observer(() => {
   const { Form } = useForm<FormProps>();
   const { auth } = useStores();
   const [passReset, setPassReset] = useState<boolean>(false);
@@ -58,6 +57,6 @@ export const ResetPass: NavioScreen = observer(() => {
   );
 });
 
-ResetPass.options = {
-  title: "Reset password",
-};
+// ResetPass.options = {
+//   title: "Reset password",
+// };

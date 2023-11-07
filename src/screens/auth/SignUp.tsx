@@ -2,10 +2,9 @@ import { observer } from "mobx-react-lite";
 import { Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, View } from "react-native-ui-lib";
-import { NavioScreen } from "rn-navio";
 
 import { Link, LoaderScreen, useForm } from "@app/components";
-import { navio } from "@app/Navigation";
+// import { navio } from "@app/Navigation";
 import { useStores } from "@app/utils/store";
 
 type FormProps = {
@@ -14,7 +13,7 @@ type FormProps = {
   passRepeat: string;
 };
 
-export const SignUp: NavioScreen = observer(() => {
+export const SignUp = observer(() => {
   const { Form } = useForm<FormProps>();
   const { auth } = useStores();
 
@@ -25,7 +24,9 @@ export const SignUp: NavioScreen = observer(() => {
       );
       return;
     }
-    auth.signUpWithPassword(email, pass).then(() => navio.push("Verification"));
+    auth.signUpWithPassword(email, pass).then(() => {
+      //navio.push("Verification")
+    });
   };
 
   return (
@@ -77,6 +78,6 @@ export const SignUp: NavioScreen = observer(() => {
   );
 });
 
-SignUp.options = {
-  title: "Create new account",
-};
+// SignUp.options = {
+//   title: "Create new account",
+// };

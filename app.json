@@ -27,6 +27,7 @@
       }
     },
     "web": {
+      "bundler": "metro",
       "favicon": "./assets/favicon.png"
     },
     "extra": {
@@ -39,6 +40,9 @@
     },
     "updates": {
       "url": "https://u.expo.dev/bda08bc8-4390-4f33-a99e-c04ef507760c"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }

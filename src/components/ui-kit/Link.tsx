@@ -4,7 +4,7 @@ import cn from "classnames";
 import * as Linking from "expo-linking";
 import { Text } from "react-native-ui-lib";
 
-import { navio } from "@app/Navigation";
+// import { navio } from "@app/Navigation";
 
 type LinkProps = {
   path: string;
@@ -17,7 +17,7 @@ export function Link({ path, className, children }: LinkProps) {
     if (isUrl) {
       Linking.openURL(path);
     } else {
-      navio.push(path as any);
+      // navio.push(path as any);
     }
   };
 

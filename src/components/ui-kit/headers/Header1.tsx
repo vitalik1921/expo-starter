@@ -1,6 +1,5 @@
 import { FC } from "react";
 
-import { User } from "iconoir-react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Avatar, Text, View } from "react-native-ui-lib";
 import { Bounceable } from "rn-bounceable";

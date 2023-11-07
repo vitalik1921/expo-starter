@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, View } from "react-native-ui-lib";
-import { NavioScreen } from "rn-navio";
+// import { NavioScreen } from "rn-navio";
 
 import { Button, Link, LoaderScreen, useForm } from "@app/components";
 import { useStores } from "@app/utils/store";
@@ -11,7 +11,7 @@ type FormProps = {
   pass: string;
 };
 
-export const Login: NavioScreen = observer(() => {
+export const Login = observer(() => {
   const { Form } = useForm<FormProps>();
   const { auth } = useStores();
 

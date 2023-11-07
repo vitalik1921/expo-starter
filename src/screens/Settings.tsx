@@ -1,6 +1,5 @@
 import { ScrollView } from "react-native";
 import { SegmentedControl, Text, View, Colors } from "react-native-ui-lib";
-import { NavioScreen } from "rn-navio";
 import {
   appearances,
   appearancesUI,
@@ -13,7 +12,7 @@ import {
 import { Button, Row, Section } from "@app/components";
 import { useStores } from "@app/utils/store";
 
-export const Settings: NavioScreen = ({}) => {
+export const Settings = ({}) => {
   const {
     ui: { appearance, language, setAppearance, setLanguage },
     auth,

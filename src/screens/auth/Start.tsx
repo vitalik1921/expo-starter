@@ -1,11 +1,10 @@
 import { Image, Text, View } from "react-native-ui-lib";
-import { NavioScreen } from "rn-navio";
 
 import startIllustration from "@app/assets/start-ilustration.jpg";
 import { Button, Link } from "@app/components";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export const Start: NavioScreen = () => {
+export const Start = () => {
   return (
     <SafeAreaView className="flex flex-1 relative">
       <View className="flex-1 p-10 justify-between">
