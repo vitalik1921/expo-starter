@@ -1,10 +1,12 @@
+import { useState } from "react";
+
+import { Stack } from "expo-router";
 import { observer } from "mobx-react-lite";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, View } from "react-native-ui-lib";
 
 import { Button, LoaderScreen, useForm } from "@app/components";
 import { useStores } from "@app/utils/store";
-import { useState } from "react";
 
 type FormProps = {
   email: string;
@@ -21,6 +23,11 @@ export const ResetPass = observer(() => {
 
   return (
     <SafeAreaView className="flex flex-1 flex-col p-[24] pt-[50]">
+      <Stack.Screen
+        options={{
+          title: "Reset password",
+        }}
+      />
       {passReset && (
         <View className="flex-1 items-center justify-center">
           <Text className="text-center mb-5">
@@ -58,7 +65,3 @@ export const ResetPass = observer(() => {
 });
 
 export default ResetPass;
-
-// ResetPass.options = {
-//   title: "Reset password",
-// };

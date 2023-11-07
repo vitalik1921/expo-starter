@@ -1,12 +1,14 @@
+import { Stack } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Image, Text, View } from "react-native-ui-lib";
 
 import startIllustration from "@app/assets/start-ilustration.jpg";
 import { Button, Link } from "@app/components";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export const Start = () => {
   return (
     <SafeAreaView className="flex flex-1 relative">
+      <Stack.Screen options={{ headerShown: false }} />
       <View className="flex-1 p-10 justify-between">
         <View className="h-[400] justify-start">
           <View className="flex-row justify-center mb-[40]">
@@ -39,7 +41,3 @@ export const Start = () => {
 };
 
 export default Start;
-
-// Start.options = {
-//   headerShown: false,
-// };

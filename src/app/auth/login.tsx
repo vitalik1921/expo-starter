@@ -1,7 +1,7 @@
+import { Stack } from "expo-router";
 import { observer } from "mobx-react-lite";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, View } from "react-native-ui-lib";
-// import { NavioScreen } from "rn-navio";
 
 import { Button, Link, LoaderScreen, useForm } from "@app/components";
 import { useStores } from "@app/utils/store";
@@ -20,7 +20,12 @@ export const Login = observer(() => {
   };
 
   return (
-    <SafeAreaView className="flex flex-1 flex-col p-[24]">
+    <SafeAreaView className="flex flex-1 flex-col p-[24] pt-[50]">
+      <Stack.Screen
+        options={{
+          headerTitle: "Login",
+        }}
+      />
       <Form className="flex-1" onSubmit={handleLogin}>
         <LoaderScreen caption="Loading..." visible={auth.isLoading} />
         <View className="flex-1">

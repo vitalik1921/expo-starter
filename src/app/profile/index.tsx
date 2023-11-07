@@ -8,11 +8,13 @@ import {
   languagesUI,
   languageUIToInternal,
 } from "@app/utils/enums";
+import { Stack } from "expo-router";
 
 import { Button, Row, Section } from "@app/components";
 import { useStores } from "@app/utils/store";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export const Settings = ({}) => {
+export const Profile = () => {
   const {
     ui: { appearance, language, setAppearance, setLanguage },
     auth,
@@ -32,7 +34,8 @@ export const Settings = ({}) => {
     setLanguage(languageUIToInternal[languagesUI[index]]);
 
   return (
-    <View flex bg-bgColor>
+    <SafeAreaView className="flex flex-1 flex-col p-[24] pt-[50]">
+      <Stack.Screen options={{ headerTitle: "Profile" }} />
       <ScrollView contentInsetAdjustmentBehavior="always">
         <Section title={"UI"}>
           <View paddingV-s1>
@@ -78,6 +81,8 @@ export const Settings = ({}) => {
           </View>
         </Section>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
+
+export default Profile;

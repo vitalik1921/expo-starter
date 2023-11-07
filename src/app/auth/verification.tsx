@@ -1,7 +1,8 @@
-import { Button } from "@app/components";
+import { router, Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text } from "react-native-ui-lib";
-import { router} from "expo-router";
+
+import { Button } from "@app/components";
 
 export const Verification = () => {
   const handleCancel = () => {
@@ -10,6 +11,12 @@ export const Verification = () => {
 
   return (
     <SafeAreaView className="flex flex-1 items-center justify-center">
+      <Stack.Screen
+        options={{
+          headerShown: false,
+          animation: "fade_from_bottom",
+        }}
+      />
       <Text className="text-regular font-light mb-[24]">
         We sent verification email to your email
       </Text>
@@ -19,8 +26,3 @@ export const Verification = () => {
 };
 
 export default Verification;
-
-// Verification.options = {
-//   headerShown: false,
-//   animation: "fade_from_bottom",
-// };

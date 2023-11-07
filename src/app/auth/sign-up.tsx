@@ -1,27 +1,42 @@
 import { observer } from "mobx-react-lite";
+import { Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, View } from "react-native-ui-lib";
-// import { NavioScreen } from "rn-navio";
 
-import { Button, Link, LoaderScreen, useForm } from "@app/components";
+import { Link, LoaderScreen, useForm } from "@app/components";
+import { router, Stack } from "expo-router";
 import { useStores } from "@app/utils/store";
 
 type FormProps = {
   email: string;
   pass: string;
+  passRepeat: string;
 };
 
-export const Login = observer(() => {
+export const SignUp = observer(() => {
   const { Form } = useForm<FormProps>();
   const { auth } = useStores();
 
-  const handleLogin = ({ email, pass }: FormProps) => {
-    auth.signInWithPassword(email, pass);
+  const handleSignUp = ({ email, pass, passRepeat }: FormProps) => {
+    if (pass !== passRepeat) {
+      Alert.alert(
+        "Passwords entered do not match. Please ensure they are the same."
+      );
+      return;
+    }
+    auth.signUpWithPassword(email, pass).then(() => {
+      router.push("/auth/verification");
+    });
   };
 
   return (
     <SafeAreaView className="flex flex-1 flex-col p-[24] pt-[50]">
-      <Form className="flex-1" onSubmit={handleLogin}>
+      <Stack.Screen
+        options={{
+          title: "Create new account",
+        }}
+      />
+      <Form className="flex-1" onSubmit={handleSignUp}>
         <LoaderScreen caption="Loading..." visible={auth.isLoading} />
         <View className="flex-1">
           <Form.Input
@@ -44,23 +59,28 @@ export const Login = observer(() => {
             rules={{ required: true }}
             className="flex-1"
             secureTextEntry
+            textContentType="oneTimeCode"
           />
-          <Button
-            variant="link"
-            label="Forgot password?"
-            className="self-start"
-            path="ResetPass"
+          <Form.Input
+            name="passRepeat"
+            label="Repeat the password"
+            rules={{ required: true }}
+            className="flex-1"
+            secureTextEntry
+            textContentType="oneTimeCode"
           />
         </View>
         <View className="flex-1 items-center justify-end">
           <Text className="text-regular font-light mb-[24]">
             By continuing, you agree to our{" "}
-            <Link path="https://google.com">Terms of Service</Link> and{" "}
-            <Link path="https://google.com">Privacy Policy</Link>.
+            <Link path="https://google.com">Terms</Link> of{" "}
+            <Link path="https://google.com">Service and Privacy</Link> Policy.
           </Text>
-          <Form.Submit label="Login" />
+          <Form.Submit label="Sign up" />
         </View>
       </Form>
     </SafeAreaView>
   );
 });
+
+export default SignUp;

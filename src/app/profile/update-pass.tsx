@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { View } from "react-native-ui-lib";
 
 import { LoaderScreen, useForm } from "@app/components";
-// import { navio } from "@app/Navigation";
+import { router, Stack } from "expo-router";
 import { useStores } from "@app/utils/store";
 
 type FormProps = {
@@ -25,12 +25,13 @@ export const UpdatePass = observer(() => {
     }
     auth.updatePass(pass).then(() => {
       console.warn("we here");
-      // navio.N.navigate("Settings");
+      router.push("/profile");
     });
   };
 
   return (
-    <SafeAreaView className="flex flex-1 flex-col p-[24] pt-[50]">
+    <SafeAreaView className="flex flex-1 flex-col p-[24] p-[50]">
+      <Stack.Screen options={{ headerTitle: "Update password" }} />
       <Form className="flex-1" onSubmit={handleUpdate}>
         <LoaderScreen caption="Loading..." visible={auth.isLoading} />
         <View className="flex-1">
@@ -59,6 +60,4 @@ export const UpdatePass = observer(() => {
   );
 });
 
-// UpdatePass.options = {
-//   title: "Update password",
-// };
+export default UpdatePass;

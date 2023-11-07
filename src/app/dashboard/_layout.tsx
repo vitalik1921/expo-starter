@@ -1,11 +1,13 @@
-import { Header1 } from "@app/components";
-import { Tabs, router } from "expo-router";
+import { router, Tabs } from "expo-router";
 
-export const RootLayout = () => {
+import { Header1 } from "@app/components";
+import { tabScreenDefaultOptions } from "@app/utils/navigationTheme";
+
+export const Layout = () => {
   return (
     <>
       <Header1 onRightButtonPress={() => router.push("/profile")} />
-      <Tabs screenOptions={{ headerShown: false }}>
+      <Tabs screenOptions={{ ...tabScreenDefaultOptions, headerShown: false }}>
         <Tabs.Screen
           name="index"
           options={{
@@ -29,4 +31,4 @@ export const RootLayout = () => {
   );
 };
 
-export default RootLayout;
+export default Layout;
