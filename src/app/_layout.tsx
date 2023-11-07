@@ -15,6 +15,7 @@ import { supabase } from "@/utils/supabase";
 import { theme } from "@/utils/theme";
 import {
   getStateFromPath as _getStateFromPath,
+  NavigationContainer,
   ThemeProvider,
 } from "@react-navigation/native";
 
@@ -56,24 +57,26 @@ export const RootLayout = () => {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <SafeAreaProvider>
-        <StatusBar
-          style={navigationTheme.statusBarStyle}
-          backgroundColor={navigationTheme.statusBarBGColor}
-        />
-        <IconoirProvider
-          iconProps={{
-            color: theme.colors.ink.darkest,
-            strokeWidth: 2,
-            width: "24",
-            height: "24",
-          }}
-        >
-          <ThemeProvider value={navigationTheme.navigationTheme}>
-            <Slot />
-          </ThemeProvider>
-        </IconoirProvider>
-      </SafeAreaProvider>
+      <NavigationContainer>
+        <SafeAreaProvider>
+          <StatusBar
+            style={navigationTheme.statusBarStyle}
+            backgroundColor={navigationTheme.statusBarBGColor}
+          />
+          <IconoirProvider
+            iconProps={{
+              color: theme.colors.ink.darkest,
+              strokeWidth: 2,
+              width: "24",
+              height: "24",
+            }}
+          >
+            <ThemeProvider value={navigationTheme.navigationTheme}>
+              <Slot />
+            </ThemeProvider>
+          </IconoirProvider>
+        </SafeAreaProvider>
+      </NavigationContainer>
     </GestureHandlerRootView>
   );
 };

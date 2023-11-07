@@ -22,7 +22,7 @@ import * as storage from "@/utils/storage";
 /**
  * The key we'll be saving our state as within async storage.
  */
-const ROOT_STATE_STORAGE_KEY = "blitzapp-v1";
+const ROOT_STATE_STORAGE_KEY = "warpkit-v1";
 
 /**
  * Setup the root state.
