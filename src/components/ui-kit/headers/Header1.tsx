@@ -1,20 +1,17 @@
 import { FC } from "react";
 
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Avatar, Text, View } from "react-native-ui-lib";
+import { Avatar, Text, View, ViewProps } from "react-native-ui-lib";
 import { Bounceable } from "rn-bounceable";
 
 type Header1Props = {
   onRightButtonPress: () => void;
-};
+} & ViewProps;
 
-export const Header1: FC<Header1Props> = ({ onRightButtonPress }) => {
-  const { top } = useSafeAreaInsets();
-
+export const Header1: FC<Header1Props> = ({ onRightButtonPress, ...props }) => {
   return (
     <View
       className="flex flex-row px-[12] pt-[12] pb-[24] justify-between items-center"
-      style={{ marginTop: top }}
+      {...props}
     >
       <Text className="text-title3 font-bold">Dashboard</Text>
       <Bounceable onPress={onRightButtonPress}>

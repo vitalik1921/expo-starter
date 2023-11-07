@@ -1,11 +1,10 @@
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Text } from "react-native-ui-lib";
+import { View, Text } from "react-native-ui-lib";
 
 export const Tab3 = () => {
   return (
-    <SafeAreaView>
+    <View>
       <Text>Tab3</Text>
-    </SafeAreaView>
+    </View>
   );
 };
 
