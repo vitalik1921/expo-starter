@@ -7,11 +7,11 @@ import {
   languages,
   languagesUI,
   languageUIToInternal,
-} from "@app/utils/enums";
+} from "@/utils/enums";
 import { Stack } from "expo-router";
 
-import { Button, Row, Section } from "@app/components";
-import { useStores } from "@app/utils/store";
+import { Button, Row, Section } from "@/components";
+import { useStores } from "@/utils/store";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export const Profile = () => {

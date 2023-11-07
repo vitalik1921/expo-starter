@@ -1,4 +1,4 @@
-import { Appearance, Language } from "@app/utils/enums";
+import { Appearance, Language } from "@/utils/enums";
 import { Instance, SnapshotOut, types } from "mobx-state-tree";
 
 export const UIStoreModel = types

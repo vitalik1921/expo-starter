@@ -8,7 +8,7 @@ import {
 } from "react-hook-form";
 import { TextFieldProps } from "react-native-ui-lib";
 
-import { Input } from "@app/components";
+import { Input } from "@/components";
 
 import { FieldWrapper } from "./FieldWrapper";
 import { FormFieldProps } from "./props";

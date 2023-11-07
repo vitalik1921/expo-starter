@@ -16,8 +16,8 @@ import {
   onSnapshot,
 } from "mobx-state-tree";
 
-import { RootStoreModel, RootStoreSnapshot } from "@app/stores/index";
-import * as storage from "@app/utils/storage";
+import { RootStoreModel, RootStoreSnapshot } from "@/stores/index";
+import * as storage from "@/utils/storage";
 
 /**
  * The key we'll be saving our state as within async storage.

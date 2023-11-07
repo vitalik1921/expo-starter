@@ -2,8 +2,8 @@ import { Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image, Text, View } from "react-native-ui-lib";
 
-import startIllustration from "@app/assets/start-ilustration.jpg";
-import { Button, Link } from "@app/components";
+import startIllustration from "@/assets/start-ilustration.jpg";
+import { Button, Link } from "@/components";
 
 export const Start = () => {
   return (

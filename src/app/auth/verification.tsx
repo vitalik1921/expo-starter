@@ -2,7 +2,7 @@ import { router, Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text } from "react-native-ui-lib";
 
-import { Button } from "@app/components";
+import { Button } from "@/components";
 
 export const Verification = () => {
   const handleCancel = () => {

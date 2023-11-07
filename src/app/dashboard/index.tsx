@@ -1,8 +1,8 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text } from "react-native-ui-lib";
 
-import { Button } from "@app/components";
-import { useStores } from "@app/utils/store";
+import { Button } from "@/components";
+import { useStores } from "@/utils/store";
 
 export const Dashboard = () => {
   const { auth } = useStores();

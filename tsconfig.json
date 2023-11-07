@@ -16,7 +16,7 @@
     "allowImportingTsExtensions": true,
     "baseUrl": ".",
     "paths": {
-      "@app/*": ["src/*/index", "src/*"]
+      "@/*": ["src/*/index", "src/*"]
     }
   },
   "exclude": [

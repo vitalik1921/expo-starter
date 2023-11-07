@@ -1,8 +1,8 @@
 import { router, Tabs } from "expo-router";
 
-import { Header1 } from "@app/components";
-import { tabScreenDefaultOptions } from "@app/utils/navigationTheme";
-import { useProtected } from "@app/utils/router";
+import { Header1 } from "@/components";
+import { tabScreenDefaultOptions } from "@/utils/navigationTheme";
+import { useProtected } from "@/utils/router";
 
 export const Layout = () => {
   useProtected();

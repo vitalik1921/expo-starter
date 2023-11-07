@@ -9,10 +9,10 @@ import { useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { useNavigationTheme } from "@app/utils/navigationTheme";
-import { useInitRootStore } from "@app/utils/store";
-import { supabase } from "@app/utils/supabase";
-import { theme } from "@app/utils/theme";
+import { useNavigationTheme } from "@/utils/navigationTheme";
+import { useInitRootStore } from "@/utils/store";
+import { supabase } from "@/utils/supabase";
+import { theme } from "@/utils/theme";
 import {
   getStateFromPath as _getStateFromPath,
   ThemeProvider,

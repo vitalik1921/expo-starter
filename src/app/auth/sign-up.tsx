@@ -3,9 +3,9 @@ import { Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, View } from "react-native-ui-lib";
 
-import { Link, LoaderScreen, useForm } from "@app/components";
+import { Link, LoaderScreen, useForm } from "@/components";
 import { router, Stack } from "expo-router";
-import { useStores } from "@app/utils/store";
+import { useStores } from "@/utils/store";
 
 type FormProps = {
   email: string;

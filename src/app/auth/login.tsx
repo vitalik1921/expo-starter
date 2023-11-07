@@ -3,8 +3,8 @@ import { observer } from "mobx-react-lite";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, View } from "react-native-ui-lib";
 
-import { Button, Link, LoaderScreen, useForm } from "@app/components";
-import { useStores } from "@app/utils/store";
+import { Button, Link, LoaderScreen, useForm } from "@/components";
+import { useStores } from "@/utils/store";
 
 type FormProps = {
   email: string;

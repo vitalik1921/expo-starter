@@ -1,7 +1,7 @@
 import { flow, Instance, SnapshotOut, types } from "mobx-state-tree";
 
-import { Session, SessionModel } from "@app/models";
-import { supabase } from "@app/utils/supabase";
+import { Session, SessionModel } from "@/models";
+import { supabase } from "@/utils/supabase";
 import {
   AuthResponse,
   Session as SupabaseSession,

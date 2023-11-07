@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { TextField } from "react-native-ui-lib";
 
-import { theme } from "@app/utils/theme";
+import { theme } from "@/utils/theme";
 
 type InputProps = {
   label?: string;

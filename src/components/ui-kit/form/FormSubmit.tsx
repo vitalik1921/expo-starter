@@ -2,7 +2,7 @@ import { FC, useContext } from "react";
 
 import { useFormContext } from "react-hook-form";
 
-import { Button, ButtonProps } from "@app/components";
+import { Button, ButtonProps } from "@/components";
 
 import { FormContext } from "./FormWrapper";
 

@@ -4,7 +4,7 @@ import { Button as LibButton, View } from "react-native-ui-lib";
 import { Bounceable } from "rn-bounceable";
 import { router } from "expo-router";
 
-import { theme } from "@app/utils/theme";
+import { theme } from "@/utils/theme";
 
 export type ButtonProps = {
   label: string;

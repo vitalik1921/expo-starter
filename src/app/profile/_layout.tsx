@@ -1,7 +1,7 @@
 import { Stack } from "expo-router";
 
-import { screenDefaultOptions } from "@app/utils/navigationTheme";
-import { useProtected } from "@app/utils/router";
+import { screenDefaultOptions } from "@/utils/navigationTheme";
+import { useProtected } from "@/utils/router";
 
 export const Layout = () => {
   useProtected();
