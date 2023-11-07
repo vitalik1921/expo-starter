@@ -20,7 +20,7 @@ export const Login = observer(() => {
   };
 
   return (
-    <SafeAreaView className="flex flex-1 flex-col p-[24] pt-[50]">
+    <SafeAreaView className="flex flex-1 flex-col p-[24]">
       <Form className="flex-1" onSubmit={handleLogin}>
         <LoaderScreen caption="Loading..." visible={auth.isLoading} />
         <View className="flex-1">
@@ -49,7 +49,7 @@ export const Login = observer(() => {
             variant="link"
             label="Forgot password?"
             className="self-start"
-            path="ResetPass"
+            path="/auth/reset-pass"
           />
         </View>
         <View className="flex-1 items-center justify-end">

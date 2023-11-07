@@ -1,10 +1,11 @@
 import { Button } from "@app/components";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text } from "react-native-ui-lib";
+import { router} from "expo-router";
 
 export const Verification = () => {
   const handleCancel = () => {
-    // navio.stacks.push("AuthStack");
+    router.push("/");
   };
 
   return (

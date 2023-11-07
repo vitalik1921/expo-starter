@@ -25,7 +25,7 @@ export const Start = () => {
         </View>
         <View className="flex-1 items-center justify-end">
           <Button
-            path="SignUp"
+            path="/auth/sign-up"
             label="Create account"
             className="w-[182] mb-[24]"
           />

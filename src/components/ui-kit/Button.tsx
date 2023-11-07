@@ -2,8 +2,8 @@ import cn from "classnames";
 import * as Linking from "expo-linking";
 import { Button as LibButton, View } from "react-native-ui-lib";
 import { Bounceable } from "rn-bounceable";
+import { router } from "expo-router";
 
-// import { navio } from "@app/Navigation";
 import { theme } from "@app/utils/theme";
 
 export type ButtonProps = {
@@ -13,7 +13,7 @@ export type ButtonProps = {
   disabled?: boolean;
   onPress?: () => void;
   className?: string;
-}
+};
 
 export function Button({
   label,
@@ -33,7 +33,7 @@ export function Button({
       if (isUrl) {
         Linking.openURL(path);
       } else {
-        // navio.N.navigate(path as any);
+        router.push(path);
       }
       return;
     }

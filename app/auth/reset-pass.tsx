@@ -26,7 +26,7 @@ export const ResetPass = observer(() => {
           <Text className="text-center mb-5">
             Your email has been reset. Please review your inbox to proceed.
           </Text>
-          <Button path="Login" label="Ok" />
+          <Button path="/auth/login" label="Ok" />
         </View>
       )}
       {!passReset && (
