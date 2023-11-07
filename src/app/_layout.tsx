@@ -27,11 +27,12 @@ if (__DEV__) {
 
 export const RootLayout = () => {
   useColorScheme();
-  const navigationTheme = useNavigationTheme();
   const {
     rehydrated,
     rootStore: { auth },
   } = useInitRootStore();
+  const navigationTheme = useNavigationTheme();
+
   const isReady = [rehydrated, !auth.isLoading].every((item) => !!item);
 
   useEffect(() => {
@@ -47,7 +48,7 @@ export const RootLayout = () => {
       router.replace(auth.isAuthenticated ? "/dashboard" : "/auth/start");
       SplashScreen.hideAsync();
     }
-  }, [isReady]);
+  }, [isReady, auth.isAuthenticated]);
 
   if (!isReady) {
     return null;

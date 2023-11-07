@@ -6,7 +6,7 @@ import { Button } from "@app/components";
 
 export const Verification = () => {
   const handleCancel = () => {
-    router.push("/");
+    router.push("/auth/start");
   };
 
   return (
@@ -20,7 +20,7 @@ export const Verification = () => {
       <Text className="text-regular font-light mb-[24]">
         We sent verification email to your email
       </Text>
-      <Button label="Cancel" variant="link" onPress={handleCancel} />
+      <Button label="Close" variant="link" onPress={handleCancel} />
     </SafeAreaView>
   );
 };

@@ -2,8 +2,10 @@ import { router, Tabs } from "expo-router";
 
 import { Header1 } from "@app/components";
 import { tabScreenDefaultOptions } from "@app/utils/navigationTheme";
+import { useProtected } from "@app/utils/router";
 
 export const Layout = () => {
+  useProtected();
   return (
     <>
       <Header1 onRightButtonPress={() => router.push("/profile")} />
