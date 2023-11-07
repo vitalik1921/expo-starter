@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "expo-router/entry",
   "scripts": {
-    "dev": "yarn start-dev-client",
+    "dev": "expo start --go --dev",
     "update-dev": "eas update --branch main",
     "update-preview": "eas update --branch preview",
     "update-production": "eas update --branch production",
@@ -55,6 +55,7 @@
     "react-native-screens": "~3.22.0",
     "react-native-svg": "^13.14.0",
     "react-native-ui-lib": "^7.9.1",
+    "react-native-url-polyfill": "^2.0.0",
     "react-native-web": "^0.19.9",
     "rn-bounceable": "^1.2.0"
   },

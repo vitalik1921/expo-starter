@@ -1,9 +1,8 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text } from "react-native-ui-lib";
 
-import { Button, Header1 } from "@app/components";
+import { Button } from "@app/components";
 import { useStores } from "@app/utils/store";
-// import { navio } from "@app/Navigation";
 
 export const Dashboard = () => {
   const { auth } = useStores();
@@ -15,7 +14,4 @@ export const Dashboard = () => {
   );
 };
 
-Dashboard.options = {
-  header: () => <Header1 onRightButtonPress={() => null} />,
-  headerTitle: "",
-};
+export default Dashboard;
