@@ -1,21 +1,14 @@
-import { router, Tabs } from "expo-router";
+import { Tabs } from "expo-router";
+import { HomeSimpleDoor, Packages } from "iconoir-react-native";
 import { observer } from "mobx-react-lite";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { Header1 } from "@/components";
 import { tabScreenDefaultOptions } from "@/utils/navigationTheme";
 import { useProtected } from "@/utils/router";
-import { HomeSimpleDoor, Packages } from "iconoir-react-native";
 
 export const Layout = () => {
   useProtected();
-  const { top } = useSafeAreaInsets();
   return (
     <>
-      <Header1
-        onRightButtonPress={() => router.push("/profile")}
-        style={{ marginTop: top }}
-      />
       <Tabs
         screenOptions={{
           ...tabScreenDefaultOptions(),
@@ -25,17 +18,17 @@ export const Layout = () => {
         <Tabs.Screen
           name="index"
           options={{
-            tabBarIcon: () => <HomeSimpleDoor />,
+            tabBarIcon: (props) => <HomeSimpleDoor color={props.color} />,
             title: "Dashboard",
             href: "/dashboard",
           }}
         />
         <Tabs.Screen
-          name="tab3"
+          name="ui-kit"
           options={{
-            tabBarIcon: () => <Packages />,
+            tabBarIcon: (props) => <Packages color={props.color} />,
             title: "UI kit",
-            href: "/dashboard/tab3",
+            href: "/dashboard/ui-kit",
           }}
         />
       </Tabs>

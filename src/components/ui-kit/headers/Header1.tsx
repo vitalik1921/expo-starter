@@ -1,3 +1,4 @@
+import { useRoute } from "@react-navigation/native";
 import { FC } from "react";
 
 import { Avatar, Text, View, ViewProps } from "react-native-ui-lib";
@@ -7,13 +8,15 @@ type Header1Props = {
   onRightButtonPress: () => void;
 } & ViewProps;
 
-export const Header1: FC<Header1Props> = ({ onRightButtonPress, ...props }) => {
+export const Header1: FC<Header1Props> = ({ children, onRightButtonPress, ...props }) => {
+  const route = useRoute();
+  console.log("route", route);
   return (
     <View
       className="flex flex-row px-[12] pt-[12] pb-[24] justify-between items-center"
       {...props}
     >
-      <Text className="text-title3 font-bold">Dashboard</Text>
+      <Text className="text-title3 font-bold">{children}</Text>
       <Bounceable onPress={onRightButtonPress}>
         <Avatar
           source={{

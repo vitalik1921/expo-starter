@@ -10,7 +10,7 @@ export const Verification = () => {
   };
 
   return (
-    <SafeAreaView className="flex flex-1 items-center justify-center">
+    <SafeAreaView className="flex flex-1 items-center justify-center p-[24]">
       <Stack.Screen
         options={{
           headerShown: false,

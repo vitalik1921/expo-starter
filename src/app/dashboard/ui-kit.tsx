@@ -1,10 +1,9 @@
+import { Header1 } from "@/components";
 import { router } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Text, View } from "react-native-ui-lib";
+import { View, Text } from "react-native-ui-lib";
 
-import { Header1 } from "@/components";
-
-export const Dashboard = () => {
+export const UiKit = () => {
   const { top } = useSafeAreaInsets();
 
   return (
@@ -13,13 +12,13 @@ export const Dashboard = () => {
         onRightButtonPress={() => router.push("/profile")}
         style={{ marginTop: top }}
       >
-        Dashboard
+        UI kit
       </Header1>
-      <View className="flex-1 p-[24] pt-0 items-center justify-center">
-        <Text>You dashboard will be implemented here</Text>
+      <View className="flex-1 p-[24] pt-0">
+        <Text>UI kit</Text>
       </View>
     </>
   );
 };
 
-export default Dashboard;
+export default UiKit;
