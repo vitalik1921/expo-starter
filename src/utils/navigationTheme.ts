@@ -105,8 +105,8 @@ export const screenDefaultOptions = (): NativeStackNavigationOptions => ({
 });
 
 export const tabScreenDefaultOptions = (): BottomTabNavigationOptions => ({
-  tabBarActiveTintColor: theme.colors.ink.darkest,
-  tabBarInactiveTintColor: theme.colors.sky.light,
+  tabBarActiveTintColor: theme.colors.primary.base,
+  tabBarInactiveTintColor: theme.colors.sky.base,
   tabBarStyle: {
     backgroundColor: theme.colors.white,
     borderTopWidth: 0,

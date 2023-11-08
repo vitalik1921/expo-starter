@@ -20,7 +20,7 @@ export const Verification = () => {
       <Text className="text-regular font-light mb-[24]">
         We sent verification email to your email
       </Text>
-      <Button label="Close" variant="link" onPress={handleCancel} />
+      <Button label="Close" onPress={handleCancel} />
     </SafeAreaView>
   );
 };

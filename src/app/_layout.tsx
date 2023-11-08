@@ -51,17 +51,19 @@ export const RootLayout = () => {
       auth.setSession(session);
       auth.setLoading(false);
       setSessionInitiated(true);
-
-      if (auth.isAuthenticated) {
-        if (
-          segments.includes("update-pass-handler") ||
-          segments.includes("verification-handler")
-        )
-          return;
-        router.replace("/dashboard");
-      }
     });
   }, []);
+
+  useEffect(() => {
+    if (sessionInitiated && auth.isAuthenticated) {
+      if (
+        segments.includes("update-pass-handler") ||
+        segments.includes("verification-handler")
+      )
+        return;
+      router.replace("/dashboard");
+    }
+  }, [sessionInitiated, auth.isAuthenticated]);
 
   if (!isReady) {
     return null;
@@ -76,7 +78,7 @@ export const RootLayout = () => {
         />
         <IconoirProvider
           iconProps={{
-            color: theme.colors.ink.darkest,
+            color: theme.colors.primary.base,
             strokeWidth: 2,
             width: "24",
             height: "24",
