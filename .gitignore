@@ -36,3 +36,8 @@ yarn-error.*
 
 # ide's
 .vscode
+
+# Supabase
+/supabase/.branches
+/supabase/.temp
+
