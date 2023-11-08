@@ -21,7 +21,7 @@ if (!hasEventListener) {
   hasEventListener = true;
 }
 
-export function useGetUrl(): string | null {
+export const useGetUrl = (): string | null => {
   const [url, setURL] = useState<string | null>(currentURL);
 
   useLayoutEffect(() => {
@@ -36,4 +36,16 @@ export function useGetUrl(): string | null {
   }, []);
 
   return url;
-}
+};
+
+export const getSupabaseUrlParams = (url: string): Record<string, string> => {
+  const chunks = url.split("#");
+  const paramsStr = chunks[1];
+  return paramsStr.split("&").reduce((acc, curr) => {
+    const chunks = curr.split("=");
+    const key = chunks[0];
+    const value = chunks[1];
+    acc[key] = value;
+    return acc;
+  }, {} as Record<string, string>);
+};

@@ -63,7 +63,7 @@ export const AuthStoreModel = types
           email,
           password,
           options: {
-            emailRedirectTo: "warpkit://emails/verification-handler/handler",            
+            emailRedirectTo: "warpkit://emails/verification-handler/handler",
           },
         });
         if (error) throw error;
@@ -82,7 +82,7 @@ export const AuthStoreModel = types
       try {
         store.isLoading = true;
         const { error } = yield supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: "warpkit://emails/udpate-pass-handler/handler",
+          redirectTo: "warpkit://emails/update-pass-handler/handler",
         });
         store.session = null;
         if (error) throw error;

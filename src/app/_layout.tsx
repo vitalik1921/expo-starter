@@ -1,6 +1,6 @@
 import "@/utils/linking";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { router, Slot, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -27,37 +27,41 @@ if (__DEV__) {
   // require("./core/devtools/ReactotronConfig.ts");
 }
 
+SplashScreen.preventAutoHideAsync();
+
 export const RootLayout = () => {
   useColorScheme();
+  const segments = useSegments();
+  const navigationTheme = useNavigationTheme();
+
   const {
     rehydrated,
     rootStore: { auth },
   } = useInitRootStore();
-  const navigationTheme = useNavigationTheme();
-  const segments = useSegments();
+  const [sessionInitiated, setSessionInitiated] = useState(false);
 
-  const isReady = [rehydrated, !auth.isLoading].every((item) => !!item);
+  const isReady = [rehydrated, sessionInitiated].every((item) => !!item);
 
   useEffect(() => {
-    SplashScreen.preventAutoHideAsync();
+    SplashScreen.hideAsync();
+  }, [isReady]);
+
+  useEffect(() => {
     supabase.auth.onAuthStateChange((_, session) => {
       auth.setSession(session);
       auth.setLoading(false);
+      setSessionInitiated(true);
+
+      if (auth.isAuthenticated) {
+        if (
+          segments.includes("update-pass-handler") ||
+          segments.includes("verification-handler")
+        )
+          return;
+        router.replace("/dashboard");
+      }
     });
   }, []);
-
-  useEffect(() => {
-    // NOTE: disable redirections for email handlers
-    if (
-      segments.includes("update-pass-handler") ||
-      segments.includes("verification-handler")
-    )
-      return;
-    if (isReady) {
-      router.replace(auth.isAuthenticated ? "/dashboard" : "/auth/start");
-      SplashScreen.hideAsync();
-    }
-  }, [isReady, auth.isAuthenticated]);
 
   if (!isReady) {
     return null;

@@ -1,4 +1,5 @@
 import { router, Tabs } from "expo-router";
+import { observer } from "mobx-react-lite";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Header1 } from "@/components";
@@ -43,4 +44,4 @@ export const Layout = () => {
   );
 };
 
-export default Layout;
+export default observer(Layout);

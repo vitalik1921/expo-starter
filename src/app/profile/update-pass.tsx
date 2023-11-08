@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { View } from "react-native-ui-lib";
 
 import { LoaderScreen, useForm } from "@/components";
-import { router, Stack } from "expo-router";
+import { router, Stack, useSegments } from "expo-router";
 import { useStores } from "@/utils/store";
 
 type FormProps = {
@@ -15,6 +15,7 @@ type FormProps = {
 export const UpdatePass = observer(() => {
   const { Form } = useForm<FormProps>();
   const { auth } = useStores();
+  const segments = useSegments();
 
   const handleUpdate = ({ pass, passRepeat }: FormProps) => {
     if (pass !== passRepeat) {
@@ -24,13 +25,14 @@ export const UpdatePass = observer(() => {
       return;
     }
     auth.updatePass(pass).then(() => {
-      console.warn("we here");
-      router.push("/profile");
+      if (segments.includes("update-pass-handler")) {
+        router.push("/dashboard");
+      }
     });
   };
 
   return (
-    <SafeAreaView className="flex flex-1 flex-col p-[24] p-[50]">
+    <SafeAreaView className="flex flex-1 flex-col p-[24] pt-[50]">
       <Stack.Screen options={{ headerTitle: "Update password" }} />
       <Form className="flex-1" onSubmit={handleUpdate}>
         <LoaderScreen caption="Loading..." visible={auth.isLoading} />

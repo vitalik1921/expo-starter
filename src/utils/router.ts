@@ -9,5 +9,5 @@ export const useProtected = () => {
     if (!auth.isAuthenticated) {
       router.replace("/auth/login");
     }
-  }, []);
+  }, [auth.isAuthenticated]);
 };
