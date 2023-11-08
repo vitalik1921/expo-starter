@@ -1,27 +1,15 @@
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Text } from "react-native-ui-lib";
-import { usePathname, useSegments, useNavigation, useRootNavigation } from "expo-router";
-import * as Linking from "expo-linking";
-import { useRoute } from "@react-navigation/native";
+import { useLayoutEffect } from "react";
+
+import { useGetUrl } from "@/utils/linking";
 
 export const VerificationHandler = () => {
-  const pathname = usePathname();
-  const segments = useSegments();
-  const route = useRoute();
+  const url = useGetUrl();
 
-  // const some = useLocalSearchParams();
-  console.warn("pathname", pathname);
-  console.warn("segments", segments);
-  console.warn("route", route);
+  useLayoutEffect(() => {
+    if (!url) return;
+  }, [url]);
 
-  Linking.getInitialURL().then((url) => {
-    console.warn(url);
-  });
-  return (
-    <SafeAreaView className="flex flex-1">
-      <Text>VerificationHandler</Text>
-    </SafeAreaView>
-  );
+  return null;
 };
 
 export default VerificationHandler;

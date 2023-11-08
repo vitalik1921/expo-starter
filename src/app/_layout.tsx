@@ -1,6 +1,8 @@
+import "@/utils/linking";
+
 import { useEffect } from "react";
 
-import { router, Slot } from "expo-router";
+import { router, Slot, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { IconoirProvider } from "iconoir-react-native";
@@ -15,7 +17,6 @@ import { supabase } from "@/utils/supabase";
 import { theme } from "@/utils/theme";
 import {
   getStateFromPath as _getStateFromPath,
-  NavigationContainer,
   ThemeProvider,
 } from "@react-navigation/native";
 
@@ -33,6 +34,7 @@ export const RootLayout = () => {
     rootStore: { auth },
   } = useInitRootStore();
   const navigationTheme = useNavigationTheme();
+  const segments = useSegments();
 
   const isReady = [rehydrated, !auth.isLoading].every((item) => !!item);
 
@@ -45,6 +47,12 @@ export const RootLayout = () => {
   }, []);
 
   useEffect(() => {
+    // NOTE: disable redirections for email handlers
+    if (
+      segments.includes("update-pass-handler") ||
+      segments.includes("verification-handler")
+    )
+      return;
     if (isReady) {
       router.replace(auth.isAuthenticated ? "/dashboard" : "/auth/start");
       SplashScreen.hideAsync();
@@ -57,26 +65,24 @@ export const RootLayout = () => {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <NavigationContainer>
-        <SafeAreaProvider>
-          <StatusBar
-            style={navigationTheme.statusBarStyle}
-            backgroundColor={navigationTheme.statusBarBGColor}
-          />
-          <IconoirProvider
-            iconProps={{
-              color: theme.colors.ink.darkest,
-              strokeWidth: 2,
-              width: "24",
-              height: "24",
-            }}
-          >
-            <ThemeProvider value={navigationTheme.navigationTheme}>
-              <Slot />
-            </ThemeProvider>
-          </IconoirProvider>
-        </SafeAreaProvider>
-      </NavigationContainer>
+      <SafeAreaProvider>
+        <StatusBar
+          style={navigationTheme.statusBarStyle}
+          backgroundColor={navigationTheme.statusBarBGColor}
+        />
+        <IconoirProvider
+          iconProps={{
+            color: theme.colors.ink.darkest,
+            strokeWidth: 2,
+            width: "24",
+            height: "24",
+          }}
+        >
+          <ThemeProvider value={navigationTheme.navigationTheme}>
+            <Slot />
+          </ThemeProvider>
+        </IconoirProvider>
+      </SafeAreaProvider>
     </GestureHandlerRootView>
   );
 };

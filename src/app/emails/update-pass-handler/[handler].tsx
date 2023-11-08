@@ -1,23 +1,16 @@
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Text } from "react-native-ui-lib";
-import { usePathname, useSegments } from "expo-router";
-import * as Linking from "expo-linking";
+import { useLayoutEffect } from "react";
+
+import { useGetUrl } from "@/utils/linking";
 
 export const UpdatePassHandler = () => {
-  const pathname = usePathname();
-  const segments = useSegments();
-  // const some = useLocalSearchParams();
-  console.warn("pathname", pathname);
-  console.warn("segments", segments);
+  const url = useGetUrl();
 
-  Linking.getInitialURL().then((url) => {
-    console.warn(url);
-  });
-  return (
-    <SafeAreaView className="flex flex-1">
-      <Text>UpdatePassHandler</Text>
-    </SafeAreaView>
-  );
+  useLayoutEffect(() => {
+    if (!url) return;
+    console.warn("url", url);
+  }, [url]);
+
+  return null;
 };
 
 export default UpdatePassHandler;
