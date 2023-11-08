@@ -1,14 +1,19 @@
-import { useRoute } from "@react-navigation/native";
 import { FC } from "react";
 
 import { Avatar, Text, View, ViewProps } from "react-native-ui-lib";
 import { Bounceable } from "rn-bounceable";
 
+import { useRoute } from "@react-navigation/native";
+
 type Header1Props = {
   onRightButtonPress: () => void;
 } & ViewProps;
 
-export const Header1: FC<Header1Props> = ({ children, onRightButtonPress, ...props }) => {
+export const Header1: FC<Header1Props> = ({
+  children,
+  onRightButtonPress,
+  ...props
+}) => {
   const route = useRoute();
   console.log("route", route);
   return (
@@ -20,7 +25,7 @@ export const Header1: FC<Header1Props> = ({ children, onRightButtonPress, ...pro
       <Bounceable onPress={onRightButtonPress}>
         <Avatar
           source={{
-            uri: "https://lh3.googleusercontent.com/-cw77lUnOvmI/AAAAAAAAAAI/AAAAAAAAAAA/WMNck32dKbc/s181-c/104220521160525129167.jpg",
+            uri: "https://i.pinimg.com/1200x/89/90/48/899048ab0cc455154006fdb9676964b3.jpg",
           }}
           size={32}
         />

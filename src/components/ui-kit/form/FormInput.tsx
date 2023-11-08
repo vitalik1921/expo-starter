@@ -17,7 +17,7 @@ type FormInputProps<F extends FieldValues> = {
   // endAdornment?: ReactNode;
   // onEndAdornmentPress?: () => void;
 } & FormFieldProps<F> &
-  Omit<TextFieldProps, "name">;
+  Omit<TextFieldProps, "name" | "placeholder">;
 
 export function FormInput<F extends FieldValues>({
   name,
