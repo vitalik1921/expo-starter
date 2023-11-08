@@ -18,7 +18,8 @@ export const Verification = () => {
         }}
       />
       <Text className="text-regular font-light mb-[24]">
-        We sent verification email to your email
+        We have sent a verification email to your inbox. To complete the
+        process, please open the verification link on your mobile device.
       </Text>
       <Button label="Close" onPress={handleCancel} />
     </SafeAreaView>

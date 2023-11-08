@@ -31,7 +31,8 @@ export const ResetPass = observer(() => {
       {passReset && (
         <View className="flex-1 items-center justify-center">
           <Text className="text-center mb-5">
-            Your email has been reset. Please review your inbox to proceed.
+            Please check your inbox for the password reset link and open it on
+            your phone to proceed.
           </Text>
           <Button path="/auth/login" label="Ok" />
         </View>

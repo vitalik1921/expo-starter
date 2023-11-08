@@ -5,8 +5,8 @@
   "elements": [
     {
       "type": "text",
-      "version": 60,
-      "versionNonce": 525792610,
+      "version": 61,
+      "versionNonce": 1746602582,
       "isDeleted": false,
       "id": "zoVSppqQUB3u1Ox6yNZ3D",
       "fillStyle": "hachure",
@@ -26,7 +26,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1698304260670,
+      "updated": 1699449347504,
       "link": null,
       "locked": false,
       "fontSize": 20,
@@ -70,8 +70,8 @@
     },
     {
       "type": "text",
-      "version": 131,
-      "versionNonce": 1573325246,
+      "version": 132,
+      "versionNonce": 45215242,
       "isDeleted": false,
       "id": "TSb9lZIV5A14I8J-7J6XV",
       "fillStyle": "hachure",
@@ -91,7 +91,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1698304260670,
+      "updated": 1699449347504,
       "link": null,
       "locked": false,
       "fontSize": 20,
@@ -106,8 +106,8 @@
     },
     {
       "type": "text",
-      "version": 124,
-      "versionNonce": 223738146,
+      "version": 125,
+      "versionNonce": 741560214,
       "isDeleted": false,
       "id": "zPuHeq9XrXF4f5fGbbtQB",
       "fillStyle": "hachure",
@@ -127,7 +127,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1698304260670,
+      "updated": 1699449347504,
       "link": null,
       "locked": false,
       "fontSize": 20,
@@ -732,8 +732,8 @@
     },
     {
       "type": "text",
-      "version": 292,
-      "versionNonce": 368779774,
+      "version": 293,
+      "versionNonce": 1595645130,
       "isDeleted": false,
       "id": "J-0ZMaMvGqICBPufXBLd5",
       "fillStyle": "hachure",
@@ -753,7 +753,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1698304260671,
+      "updated": 1699449347505,
       "link": null,
       "locked": false,
       "fontSize": 20,
@@ -1164,7 +1164,7 @@
       "containerId": "4jv8OOHtO_-_q0TkBW-km",
       "originalText": "signInWithGoogle\nsignInWithPassword\nlogout\ninitAuthStateListener",
       "lineHeight": 1.25,
-      "baseline": 114
+      "baseline": 115
     }
   ],
   "appState": {
