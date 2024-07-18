@@ -1,7 +1,5 @@
 # Expo Starter
 
-![Expo Starter Logo](link/to/logo.png)
-
 Expo Starter is a boilerplate project for cross-platform app development with Expo and React Native.
 
 ## Features
